@@ -39,11 +39,8 @@ jobs:
       - name: ⚙️ Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: 🛠️ Build with Astro
-        run: |
-          pnpm build \
-            --site "${{ steps.pages.outputs.origin }}" \
-            --base "${{ steps.pages.outputs.base_path }}"
+      - name: 🛠️ Build with Vite
+        run: pnpm build
 
       - name: ⚡ Upload artifact
         uses: actions/upload-pages-artifact@v1
