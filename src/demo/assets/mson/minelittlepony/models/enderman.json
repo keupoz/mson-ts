@@ -1,0 +1,127 @@
+{
+	"parent": "minelittlepony:skeleton",
+	"locals": {
+		"arm_length": 30
+	},
+	"data": {
+		"head": {
+      "pivot": [ 0, "#head_pivot_y", 0 ],
+      "dilate": ["#head_elongation", "#head_elongation", 0],
+			"cubes": [
+				{ "from": [-4, -6, -6], "size": [ 8,  8,  8] }
+			],
+			"children": {
+        "nose": {
+          "dilate": [-1, 0, -1],
+          "visible": false,
+          "cubes": [
+            { "from": [-4, -6, -13], "size": [ 8,  8,  8] }
+          ]
+        },
+				"snout": { "data": "minelittlepony:components/snout", "implementation": "com.minelittlepony.client.model.part.PonySnout" },
+				"ears": {
+				 "data": "minelittlepony:components/ears",
+				 "implementation": "com.minelittlepony.client.model.part.PonyEars",
+          "locals": {
+            "ear_shortening": "#global_ear_shortening"
+          }
+        },
+				"horn": { "data": "minelittlepony:components/horn", "implementation": "com.minelittlepony.client.model.part.UnicornHorn" },
+				"left_horn": {
+					"texture": {"u": 0, "v": 52},
+					"name": "left_horn",
+					"pivot": [-4, -5, -3],
+					"rotate": [200, 0, -45],
+					"cubes": [
+						{ "from": [-1, 0, -1], "size": [2, 6, 2] }
+					],
+					"children": {
+						"upright": {
+							"rotate": [0, 0, -51],
+							"pivot": [-0.5, 5.25, -0.1],
+							"cubes": [
+								{ "from": [-1, 0, -1], "size": [2, 6, 2] }
+							]
+						}
+					}
+				},
+				"right_horn": {
+					"texture": {"u": 8, "v": 52},
+					"name": "right_horn",
+					"pivot": [4, -5, -3],
+					"rotate": [200, 0, 45],
+					"cubes": [
+						{ "from": [-1, 0, -1], "size": [2, 6, 2] }
+					],
+					"children": {
+						"upright": {
+							"rotate": [0, 0, 51],
+							"texture": {"u": 8, "v": 52},
+							"pivot": [0.5, 5.25, -0.1],
+							"cubes": [
+								{ "from": [-1, 0, -1], "size": [2, 6, 2] }
+							]
+						}
+					}
+				}
+			}
+		},
+		"hat": {
+			"texture": { "u": 32, "v": 0 },
+			"visible": false,
+			"pivot": [0, 0, -2],
+			"cubes": [
+				{ "from": [-4, -6, -6], "size": [ 8, 8, 8], "dilate": -0.5 }
+			]
+		},
+		"right_arm": {
+			"pivot": ["#arm_rotation_x_neg", "#arm_rotation_y", 0],
+			"texture": { "u": 0, "v": 20 },
+			"cubes": [
+				{
+					"from": [ "#arm_x_neg", 4, "#arm_z"],
+					"size": [ "#arm_width",  "#arm_length",  "#arm_depth" ]
+				}
+			]
+		},
+		"left_arm": {
+			"pivot": ["#arm_rotation_x", "#arm_rotation_y", 0],
+			"texture": { "u": 0, "v": 20 },
+			"cubes": [
+				{
+					"from": [ "#arm_x", 4, "#arm_z"],
+					"size": [ "#arm_width",  "#arm_length",  "#arm_depth" ]
+				}
+			]
+		},
+		"right_leg": {
+			"pivot": ["#arm_rotation_x_neg", "#arm_rotation_y", 11],
+			"texture": { "u": 0, "v": 20 },
+			"cubes": [
+				{
+					"from": [ "#arm_x_neg", 4, "#arm_z"],
+					"size": [ "#arm_width",  "#arm_length",  "#arm_depth" ]
+				}
+			]
+		},
+		"left_leg": {
+			"pivot": ["#arm_rotation_x", "#arm_rotation_y", 11],
+			"texture": { "u": 0, "v": 20 },
+			"cubes": [
+				{
+					"from": [ "#arm_x", 4, "#arm_z"],
+					"size": [ "#arm_width",  "#arm_length",  "#arm_depth" ]
+				}
+			]
+		},
+		"tail": {
+			"type": "mson:slot",
+			"name": "tail",
+			"locals": {
+				"segments": 0
+			},
+			"implementation": "com.minelittlepony.client.model.part.PonyTail",
+			"data": "minelittlepony:components/tail"
+		}
+	}
+}

@@ -1,0 +1,7 @@
+{
+	"parent": "minelittlepony:races/steve/alicorn",
+	"locals": {
+		"arm_width": 2,
+		"arm_depth": 2
+	}
+}

@@ -1,0 +1,33 @@
+{
+	"texture": {"w": 64, "h": 64},
+	"locals": {
+		"segments": 4
+	},
+	"data": {
+		"tail": {
+			"pivot": [0, 0, 14],
+			"children": {
+				"segment_0": {
+					"locals": { "segment_index": 0 },
+					"implementation": "com.minelittlepony.client.model.part.PonyTail$Segment",
+					"data": "minelittlepony:components/tail_segment"
+				},
+				"segment_1": {
+					"locals": { "segment_index": 1 },
+					"implementation": "com.minelittlepony.client.model.part.PonyTail$Segment",
+					"data": "minelittlepony:components/tail_segment"
+				},
+				"segment_2": {
+					"locals": { "segment_index": 2 },
+					"implementation": "com.minelittlepony.client.model.part.PonyTail$Segment",
+					"data": "minelittlepony:components/tail_segment"
+				},
+				"segment_3": {
+					"locals": { "segment_index": 3 },
+					"implementation": "com.minelittlepony.client.model.part.PonyTail$Segment",
+					"data": "minelittlepony:components/tail_segment"
+				}
+			}
+		}
+	}
+}
