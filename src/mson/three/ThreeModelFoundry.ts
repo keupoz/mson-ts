@@ -1,7 +1,6 @@
 import type { Material } from 'three';
 
 import { Group, Mesh } from 'three';
-import { generateUUID } from 'three/src/math/MathUtils.js';
 
 import type {
   CuboidInfo,
@@ -17,8 +16,6 @@ import { createGeometry } from './createGeometry';
 export type GetMaterial = (name: string) => Material;
 
 export class ThreeModelFoundry extends ModelFoundry<Group, Group, Mesh> {
-  public readonly uuid = generateUUID();
-
   private readonly getMaterial: GetMaterial;
 
   constructor(getMaterial: GetMaterial) {
