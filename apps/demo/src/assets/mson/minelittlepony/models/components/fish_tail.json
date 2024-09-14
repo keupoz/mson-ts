@@ -1,0 +1,50 @@
+{
+  "texture": { "w": 64, "h": 64 },
+  "locals": {
+    "tail_rot_x": 90,
+    "tail_rot_x_neg": [0, "-", "#tail_rot_x"]
+  },
+  "data": {
+    "base": {
+      "texture": { "u": 0, "v": 38 },
+      "pivot": [-2, 10, 8],
+      "rotate": ["#tail_rot_x", 0, 0],
+      "mirror": true,
+      "cubes": [
+        { "from": [0, 0, 0], "size": [4, 6, 4] }
+      ],
+      "children": {
+        "tip": {
+          "texture": { "u": 24, "v": 0 },
+          "pivot": [1, 5, 1],
+          "cubes": [
+            { "size": [2, 6, 1] }
+          ],
+          "children": {
+            "fins": {
+              "texture": { "u": 56, "v": 41 },
+              "pivot": [1, 4, 0.5],
+              "rotate": ["#tail_rot_x_neg", 0, 0],
+              "cubes": [
+                {
+                  "type": "mson:plane",
+                  "face": "up",
+                  "mirror": [false, true],
+                  "position": [-8, 0, 0],
+                  "size": [8, 8]
+                },
+                {
+                  "type": "mson:plane",
+                  "face": "up",
+                  "mirror": [true, true],
+                  "position": [0, 0, 0],
+                  "size": [8, 8]
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

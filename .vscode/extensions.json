@@ -2,7 +2,8 @@
   "recommendations": [
     "editorconfig.editorconfig",
     "bradlc.vscode-tailwindcss",
-    "dbaeumer.vscode-eslint"
+    "dbaeumer.vscode-eslint",
+    "gruntfuggly.todo-tree"
   ],
   "unwantedRecommendations": []
 }

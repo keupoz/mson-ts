@@ -1,7 +1,0 @@
-{
-	"parent": "minelittlepony:races/steve/unicorn",
-	"locals": {
-		"arm_width": 3,
-		"arm_rotation_x": 1
-	}
-}

@@ -1,59 +1,52 @@
-name: Deploy Github Pages
+name: Build and Publish
 
 on:
   push:
     branches:
       - main
 
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: false
+concurrency: '${{ github.workflow }}-${{ github.ref }}'
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: 🛎️ Checkout
-        uses: actions/checkout@v3
-
-      - name: ⚙️ Setup Pnpm
-        uses: pnpm/action-setup@v2
-
-      - name: 🤖 Setup Node
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
         with:
-          node-version: 'lts/*'
-
-      - name: 📃 Setup Pages
-        id: pages
-        uses: actions/configure-pages@v3
-
-      - name: ⚙️ Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: 🛠️ Build with Vite
-        run: pnpm build
-
-      - name: ⚡ Upload artifact
-        uses: actions/upload-pages-artifact@v1
+          version: 9
+      - uses: actions/setup-node@v4
         with:
-          path: ./dist
+          node-version: 20.x
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run build
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./apps/demo/dist
 
   deploy:
+    needs: build
+
+    permissions:
+      pages: write
+      id-token: write
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     runs-on: ubuntu-latest
-    needs: build
+
     steps:
-      - name: 🚀 Deploy
-        id: deployment
-        uses: actions/deploy-pages@v2
+      - id: deployment
+        uses: actions/deploy-pages@v4
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: changesets/action@v1

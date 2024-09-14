@@ -1,0 +1,4 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "include": ["${configDir}/src", "${configDir}/*.{ts,js,mjs,cjs}"]
+}
