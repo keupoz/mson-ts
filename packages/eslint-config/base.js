@@ -1,10 +1,32 @@
-import keupoz from '@keupoz/eslint-config';
+import antfu from '@antfu/eslint-config'
 
-export default keupoz({
+export default antfu({
+  formatters: true,
   react: true,
-  tailwind: true,
-  typescript: true,
-  importsInternalPattern: ['@repo/**', '@demo/**', '@ui/**'],
-}).append({
-  ignores: ['**/shadcn/**'],
-});
+  isInEditor: false,
+  rules: {
+    'antfu/curly': ['off'],
+    'curly': ['error', 'all'],
+
+    'style/brace-style': ['error', '1tbs'],
+
+    'perfectionist/sort-imports': ['error', {
+      internalPattern: ['@repo/**', '@demo/**', '@ui/**'],
+      groups: [
+        'type',
+        ['parent-type', 'sibling-type', 'index-type'],
+
+        'builtin',
+        'external',
+        ['internal', 'internal-type'],
+        ['parent', 'sibling', 'index'],
+        'side-effect',
+        'object',
+        'unknown',
+      ],
+      newlinesBetween: 'ignore',
+      order: 'asc',
+      type: 'natural',
+    }],
+  },
+})
