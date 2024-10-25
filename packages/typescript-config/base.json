@@ -1,4 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "include": ["${configDir}/src", "${configDir}/*.{ts,js,mjs,cjs}"]
+  "compilerOptions": {
+    "checkJs": true
+  },
+  "include": ["${configDir}/src", "${configDir}/*.ts", "${configDir}/*.js", "${configDir}/*.mjs", "${configDir}/*.cjs"]
 }
