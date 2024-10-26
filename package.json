@@ -1,7 +1,7 @@
 {
   "name": "mson-ts",
   "private": true,
-  "packageManager": "pnpm@9.10.0",
+  "packageManager": "pnpm@9.12.2",
   "author": "keupoz",
   "license": "MIT",
   "engines": {
@@ -13,9 +13,9 @@
     "lint": "turbo run lint"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.8",
+    "@changesets/cli": "^2.27.9",
     "@repo/eslint-config": "workspace:^",
-    "turbo": "^2.1.2",
-    "typescript": "^5.6.2"
+    "turbo": "^2.2.3",
+    "typescript": "^5.6.3"
   }
 }
