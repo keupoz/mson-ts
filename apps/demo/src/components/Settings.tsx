@@ -9,7 +9,10 @@ import { ModelItemSettings } from './settings/ModelItemSettings'
 const presetKeys = Object.keys(MODEL_PRESETS)
 
 export function Settings() {
-  const { smoothCamera, showGrid, enableLight, models } = useAppState()
+  const smoothCamera = useAppState(state => state.smoothCamera)
+  const showGrid = useAppState(state => state.showGrid)
+  const enableLight = useAppState(state => state.enableLight)
+  const models = useAppState(state => state.models)
 
   const [presetName, setPresetName] = useState(presetKeys[0] ?? 'No presets')
 
