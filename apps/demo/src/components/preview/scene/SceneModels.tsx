@@ -1,16 +1,16 @@
-import { useAppState } from '@demo/state/appState';
-import { getTextureUrl } from '@demo/textures/getTextureUrl';
-import { Model } from '../Model';
-import { ModelStage } from '../stage/ModelStage';
+import { useAppState } from '@demo/state/appState'
+import { getTextureUrl } from '@demo/textures/getTextureUrl'
+import { Model } from '../Model'
+import { ModelStage } from '../stage/ModelStage'
 
 export function SceneModels() {
-  const models = useAppState(state => state.models);
+  const models = useAppState(state => state.models)
 
   if (!models.length) {
-    return null;
+    return null
   }
 
-  const key = models.map(({ id }) => id).join(';');
+  const key = models.map(({ id }) => id).join(';')
 
   return (
     <ModelStage key={key}>
@@ -22,5 +22,5 @@ export function SceneModels() {
         />
       ))}
     </ModelStage>
-  );
+  )
 }

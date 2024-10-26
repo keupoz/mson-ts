@@ -1,38 +1,38 @@
-import { useState } from 'react';
-import { MODEL_PRESETS } from '@demo/models/presets';
-import { setAppState, useAppState } from '@demo/state/appState';
-import { Button, ComboboxWithLabel, Separator, SwitchWithLabel } from '@repo/ui';
-import { ModelItemSettings } from './settings/ModelItemSettings';
+import { useState } from 'react'
+import { MODEL_PRESETS } from '@demo/models/presets'
+import { setAppState, useAppState } from '@demo/state/appState'
+import { Button, ComboboxWithLabel, Separator, SwitchWithLabel } from '@repo/ui'
+import { ModelItemSettings } from './settings/ModelItemSettings'
 
-const presetKeys = Object.keys(MODEL_PRESETS);
+const presetKeys = Object.keys(MODEL_PRESETS)
 
 export function Settings() {
-  const { smoothCamera, showGrid, enableLight, models } = useAppState();
+  const { smoothCamera, showGrid, enableLight, models } = useAppState()
 
-  const [presetName, setPresetName] = useState(presetKeys[0] ?? 'No presets');
+  const [presetName, setPresetName] = useState(presetKeys[0] ?? 'No presets')
 
   function resolvePreset() {
-    const preset = MODEL_PRESETS[presetName];
+    const preset = MODEL_PRESETS[presetName]
 
     if (!preset) {
-      throw new Error(`No preset "${presetName}"`);
+      throw new Error(`No preset "${presetName}"`)
     }
 
-    return preset;
+    return preset
   }
 
   function applyPreset() {
-    const models = resolvePreset();
+    const models = resolvePreset()
 
-    setAppState({ models });
+    setAppState({ models })
   }
 
   function addPreset() {
-    const models = resolvePreset();
+    const models = resolvePreset()
 
     setAppState((draft) => {
-      draft.models.push(...models);
-    });
+      draft.models.push(...models)
+    })
   }
 
   return (
@@ -73,5 +73,5 @@ export function Settings() {
         <ModelItemSettings key={item.id} modelItem={item} />
       ))}
     </div>
-  );
+  )
 }

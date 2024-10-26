@@ -1,34 +1,34 @@
-import type { ReactNode } from 'react';
-import { GearIcon } from '@radix-ui/react-icons';
-import { useMediaQuery } from '@uidotdev/usehooks';
-import { Button } from '@ui/shadcn/components/ui/button';
+import type { ReactNode } from 'react'
+import { GearIcon } from '@radix-ui/react-icons'
+import { useMediaQuery } from '@uidotdev/usehooks'
+import { Button } from '@ui/shadcn/components/ui/button'
 import {
   Drawer,
   DrawerContent,
   DrawerTrigger,
-} from '@ui/shadcn/components/ui/drawer';
+} from '@ui/shadcn/components/ui/drawer'
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from '@ui/shadcn/components/ui/resizable';
-import { AppHeader } from './AppHeader';
+} from '@ui/shadcn/components/ui/resizable'
+import { AppHeader } from './AppHeader'
 
 export interface AppLayoutProps {
-  appName: string;
-  settingsSlot?: ReactNode;
-  previewSlot?: ReactNode;
+  appName: string
+  settingsSlot?: ReactNode
+  previewSlot?: ReactNode
 }
 
 export function AppLayout({ appName, settingsSlot, previewSlot }: AppLayoutProps) {
-  const isDesktop = useMediaQuery('(min-width: 900px)');
+  const isDesktop = useMediaQuery('(min-width: 900px)')
 
   settingsSlot = (
     <>
       <AppHeader appName={appName} />
       {settingsSlot}
     </>
-  );
+  )
 
   if (isDesktop) {
     return (
@@ -50,7 +50,7 @@ export function AppLayout({ appName, settingsSlot, previewSlot }: AppLayoutProps
           </ResizablePanel>
         </ResizablePanelGroup>
       </div>
-    );
+    )
   }
 
   return (
@@ -71,5 +71,5 @@ export function AppLayout({ appName, settingsSlot, previewSlot }: AppLayoutProps
         </DrawerContent>
       </Drawer>
     </div>
-  );
+  )
 }

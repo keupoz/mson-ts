@@ -1,4 +1,4 @@
-import { type ModelItem, createModelItem } from './createModelItem';
+import { createModelItem, type ModelItem } from './createModelItem'
 
 export const MODEL_PRESETS: Record<string, ModelItem[]> = {
   'Daring Doo': [
@@ -64,4 +64,4 @@ export const MODEL_PRESETS: Record<string, ModelItem[]> = {
       'minecraft:textures/entity/armorstand/wood.png',
     ),
   ],
-};
+}

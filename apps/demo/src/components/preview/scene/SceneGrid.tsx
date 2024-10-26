@@ -1,12 +1,12 @@
-import { Grid } from '@react-three/drei';
-import { DoubleSide } from 'three';
-import { useAppState } from '@demo/state/appState';
-import { useTheme } from '@repo/ui';
+import { Grid } from '@react-three/drei'
+import { DoubleSide } from 'three'
+import { useAppState } from '@demo/state/appState'
+import { useTheme } from '@repo/ui'
 
 export function SceneGrid() {
-  const showGrid = useAppState(state => state.showGrid);
-  const { isDark } = useTheme();
-  const dividerColor = isDark ? 0x52525B : 0xE4E4E7;
+  const showGrid = useAppState(state => state.showGrid)
+  const { isDark } = useTheme()
+  const dividerColor = isDark ? 0x52525B : 0xE4E4E7
 
   return (
     <Grid
@@ -24,5 +24,5 @@ export function SceneGrid() {
       position-y={-0.1}
       renderOrder={-1}
     />
-  );
+  )
 }

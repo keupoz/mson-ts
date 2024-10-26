@@ -1,41 +1,41 @@
-import { useEffect, useLayoutEffect } from 'react';
-import { useModel } from '@demo/hooks/useModel';
-import { setAppState } from '@demo/state/appState';
-import { useResetFocus } from './stage/FocusSelect/ResetFocusContext';
+import { useEffect, useLayoutEffect } from 'react'
+import { useModel } from '@demo/hooks/useModel'
+import { setAppState } from '@demo/state/appState'
+import { useResetFocus } from './stage/FocusSelect/ResetFocusContext'
 
 export interface ModelProps {
-  modelId: string;
-  textureUrl: string;
+  modelId: string
+  textureUrl: string
 }
 
 export function Model({ modelId, textureUrl }: ModelProps) {
-  const model = useModel(modelId, textureUrl);
-  const resetFocus = useResetFocus();
+  const model = useModel(modelId, textureUrl)
+  const resetFocus = useResetFocus()
 
   useLayoutEffect(() => {
     model.traverse((child) => {
       if (child.name === 'corona') {
-        child.visible = true;
-        child.renderOrder = 1;
+        child.visible = true
+        child.renderOrder = 1
       }
-    });
-  }, [model]);
+    })
+  }, [model])
 
   useEffect(() => {
     setAppState((draft) => {
-      draft.objects[modelId] = model;
-    });
+      draft.objects[modelId] = model
+    })
 
     return () => {
       setAppState((draft) => {
-        delete draft.objects[modelId];
-      });
-    };
-  }, [model, modelId]);
+        delete draft.objects[modelId]
+      })
+    }
+  }, [model, modelId])
 
   useEffect(() => {
-    resetFocus();
-  }, [model, resetFocus]);
+    resetFocus()
+  }, [model, resetFocus])
 
-  return <primitive object={model} />;
+  return <primitive object={model} />
 }

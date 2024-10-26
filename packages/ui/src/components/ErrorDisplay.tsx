@@ -1,17 +1,17 @@
 export interface ErrorDisplayProps {
-  error: unknown;
+  error: unknown
 }
 
 export function ErrorDisplay({ error }: ErrorDisplayProps) {
-  let name, message, stack;
+  let name, message, stack
 
   if (error instanceof Error) {
-    name = error.name;
-    message = error.message;
-    stack = error.stack;
+    name = error.name
+    message = error.message
+    stack = error.stack
   } else {
-    name = 'Error';
-    message = String(error);
+    name = 'Error'
+    message = String(error)
   }
 
   return (
@@ -20,5 +20,5 @@ export function ErrorDisplay({ error }: ErrorDisplayProps) {
       <pre>{`${name}: ${message}`}</pre>
       <pre className="text-muted-foreground">{stack}</pre>
     </div>
-  );
+  )
 }

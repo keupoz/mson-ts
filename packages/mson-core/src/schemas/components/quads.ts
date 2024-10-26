@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod'
 
 export const QuadsVertexSchema = z
   .tuple([
@@ -17,7 +17,7 @@ export const QuadsVertexSchema = z
       u: z.number().int().default(0),
       v: z.number().int().default(0),
     }),
-  );
+  )
 
 export const QuadsQuadSchema = z.object({
   x: z.number().int().default(0),
@@ -25,11 +25,11 @@ export const QuadsQuadSchema = z.object({
   w: z.number().int().default(0),
   h: z.number().int().default(0),
   vertices: z.array(z.number().int()).min(4),
-});
+})
 
 export const QuadsSchema = z.object({
   u: z.number().int(),
   v: z.number().int(),
   vertices: QuadsVertexSchema.array(),
   quads: QuadsQuadSchema.array(),
-});
+})

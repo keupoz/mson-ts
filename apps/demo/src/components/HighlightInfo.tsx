@@ -1,26 +1,26 @@
-import type { Vector3Like } from 'three';
-import { Euler, MathUtils, Quaternion, Vector3 } from 'three';
-import { useAppState } from '@demo/state/appState';
+import type { Vector3Like } from 'three'
+import { Euler, MathUtils, Quaternion, Vector3 } from 'three'
+import { useAppState } from '@demo/state/appState'
 
 export function HighlightInfo() {
-  const currentObject = useAppState(state => state.currentObject);
+  const currentObject = useAppState(state => state.currentObject)
 
-  const parentName = currentObject?.parent?.name ?? 'N/A';
-  const objectName = currentObject?.name ?? 'N/A';
-  let materialName = 'N/A';
+  const parentName = currentObject?.parent?.name ?? 'N/A'
+  const objectName = currentObject?.name ?? 'N/A'
+  let materialName = 'N/A'
 
-  const size = currentObject?.geometry.boundingBox?.getSize(new Vector3());
-  const position = currentObject?.getWorldPosition(new Vector3());
-  const quaternion = currentObject?.getWorldQuaternion(new Quaternion());
+  const size = currentObject?.geometry.boundingBox?.getSize(new Vector3())
+  const position = currentObject?.getWorldPosition(new Vector3())
+  const quaternion = currentObject?.getWorldQuaternion(new Quaternion())
 
   if (currentObject?.material) {
     if (Array.isArray(currentObject.material)) {
       materialName = currentObject.material
         .map(({ name, type }) => `${JSON.stringify(name)} (${type})`)
-        .join(', ');
+        .join(', ')
     } else {
-      materialName = JSON.stringify(currentObject.material.name);
-      materialName += ` (${currentObject.material.type})`;
+      materialName = JSON.stringify(currentObject.material.name)
+      materialName += ` (${currentObject.material.type})`
     }
   }
 
@@ -33,23 +33,23 @@ export function HighlightInfo() {
       <li>{`World position: ${vectorString(position)}`}</li>
       <li>{`World rotation: ${rotationString(quaternion)}`}</li>
     </ul>
-  );
+  )
 }
 
 function vectorString(vector: Vector3Like | undefined) {
-  return vector ? `${vector.x} x ${vector.y} x ${vector.z}` : 'N/A';
+  return vector ? `${vector.x} x ${vector.y} x ${vector.z}` : 'N/A'
 }
 
 function rotationString(quaternion: Quaternion | undefined) {
   if (!quaternion) {
-    return 'N/A';
+    return 'N/A'
   }
 
-  const euler = new Euler().setFromQuaternion(quaternion);
+  const euler = new Euler().setFromQuaternion(quaternion)
 
-  const x = MathUtils.radToDeg(euler.x);
-  const y = MathUtils.radToDeg(euler.y);
-  const z = MathUtils.radToDeg(euler.z);
+  const x = MathUtils.radToDeg(euler.x)
+  const y = MathUtils.radToDeg(euler.y)
+  const z = MathUtils.radToDeg(euler.z)
 
-  return `x ${x}, y ${y}, z ${z}`;
+  return `x ${x}, y ${y}, z ${z}`
 }

@@ -1,7 +1,7 @@
-import { useAppState } from '@demo/state/appState';
+import { useAppState } from '@demo/state/appState'
 
 export function SceneLight() {
-  const enableLight = useAppState(state => state.enableLight);
+  const enableLight = useAppState(state => state.enableLight)
 
   return (
     <>
@@ -12,5 +12,5 @@ export function SceneLight() {
         <directionalLight intensity={0.25 * Math.PI} position={[0, 1, -1]} />
       </group>
     </>
-  );
+  )
 }

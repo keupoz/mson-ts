@@ -1,7 +1,7 @@
-import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons';
-import clsx from 'clsx';
-import { useId } from 'react';
-import { Button } from '@ui/shadcn/components/ui/button';
+import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons'
+import clsx from 'clsx'
+import { useId } from 'react'
+import { Button } from '@ui/shadcn/components/ui/button'
 import {
   Command,
   CommandEmpty,
@@ -9,19 +9,19 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from '@ui/shadcn/components/ui/command';
+} from '@ui/shadcn/components/ui/command'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@ui/shadcn/components/ui/popover';
-import { InputWithLabel } from './InputWithLabel';
+} from '@ui/shadcn/components/ui/popover'
+import { InputWithLabel } from './InputWithLabel'
 
 export interface ComboboxWithLabelProps {
-  label: string;
-  value: string;
-  options: string[];
-  onChange: (value: string) => void;
+  label: string
+  value: string
+  options: string[]
+  onChange: (value: string) => void
 }
 
 export function ComboboxWithLabel({
@@ -30,7 +30,7 @@ export function ComboboxWithLabel({
   options,
   onChange,
 }: ComboboxWithLabelProps) {
-  const id = useId();
+  const id = useId()
 
   return (
     <InputWithLabel label={label} id={id} valueToCopy={value}>
@@ -78,5 +78,5 @@ export function ComboboxWithLabel({
         </PopoverContent>
       </Popover>
     </InputWithLabel>
-  );
+  )
 }

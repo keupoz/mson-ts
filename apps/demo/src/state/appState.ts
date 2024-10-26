@@ -1,16 +1,16 @@
-import type { Mesh, Object3D } from 'three';
-import { type ModelItem, createModelItem } from '@demo/models/createModelItem';
-import { createImmerStore } from './createImmerStore';
+import type { Mesh, Object3D } from 'three'
+import { createModelItem, type ModelItem } from '@demo/models/createModelItem'
+import { createImmerStore } from './createImmerStore'
 
 export interface AppState {
-  smoothCamera: boolean;
-  showGrid: boolean;
-  enableLight: boolean;
+  smoothCamera: boolean
+  showGrid: boolean
+  enableLight: boolean
 
-  objects: Record<string, Object3D>;
-  currentObject: Mesh | null;
+  objects: Record<string, Object3D>
+  currentObject: Mesh | null
 
-  models: ModelItem[];
+  models: ModelItem[]
 }
 
 export const useAppState = createImmerStore<AppState>(() => ({
@@ -27,7 +27,7 @@ export const useAppState = createImmerStore<AppState>(() => ({
       'community:textures/Main Cast/princesses/princess_cadence.png',
     ),
   ],
-}));
+}))
 
-export const setAppState = useAppState.setState.bind(useAppState);
-export const getAppState = useAppState.getState.bind(useAppState);
+export const setAppState = useAppState.setState.bind(useAppState)
+export const getAppState = useAppState.getState.bind(useAppState)

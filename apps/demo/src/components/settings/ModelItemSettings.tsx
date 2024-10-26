@@ -1,65 +1,65 @@
-import { saveAs } from 'file-saver';
-import { GLTFExporter, OBJExporter } from 'three/addons';
-import type { ModelItem } from '@demo/models/createModelItem';
-import { MODELS } from '@demo/models/collection';
-import { getAppState } from '@demo/state/appState';
-import { updateModel } from '@demo/state/updateModel';
-import { TEXTURES } from '@demo/textures/collection';
-import { Button, ComboboxWithLabel, Separator } from '@repo/ui';
+import { saveAs } from 'file-saver'
+import { GLTFExporter, OBJExporter } from 'three/addons'
+import { MODELS } from '@demo/models/collection'
+import type { ModelItem } from '@demo/models/createModelItem'
+import { getAppState } from '@demo/state/appState'
+import { updateModel } from '@demo/state/updateModel'
+import { TEXTURES } from '@demo/textures/collection'
+import { Button, ComboboxWithLabel, Separator } from '@repo/ui'
 
-const modelKeys = Object.keys(MODELS);
-const textureKeys = Object.keys(TEXTURES);
+const modelKeys = Object.keys(MODELS)
+const textureKeys = Object.keys(TEXTURES)
 
 export interface ModelItemSettingsProps {
-  modelItem: ModelItem;
+  modelItem: ModelItem
 }
 
 export function ModelItemSettings({ modelItem }: ModelItemSettingsProps) {
   function exportGLTF() {
-    const object = getAppState().objects[modelItem.modelId];
+    const object = getAppState().objects[modelItem.modelId]
 
     if (!object) {
-      return;
+      return
     }
 
-    const exporter = new GLTFExporter();
+    const exporter = new GLTFExporter()
 
     exporter.parse(
       object,
       (gltf) => {
-        let data;
-        let extension;
+        let data
+        let extension
 
         if (gltf instanceof ArrayBuffer) {
-          data = gltf;
-          extension = 'glb';
+          data = gltf
+          extension = 'glb'
         } else {
-          data = JSON.stringify(gltf);
-          extension = 'gltf';
+          data = JSON.stringify(gltf)
+          extension = 'gltf'
         }
 
-        const filename = `${modelItem.modelId}.${extension}`;
+        const filename = `${modelItem.modelId}.${extension}`
 
-        saveAs(new Blob([data]), filename);
+        saveAs(new Blob([data]), filename)
       },
       // TODO Replace with Shadcn alternative
       // eslint-disable-next-line no-alert
       () => alert('Failed to export model'),
-    );
+    )
   }
 
   function exportOBJ() {
-    const object = getAppState().objects[modelItem.modelId];
+    const object = getAppState().objects[modelItem.modelId]
 
     if (!object) {
-      return;
+      return
     }
 
-    const exporter = new OBJExporter();
-    const result = exporter.parse(object);
-    const filename = `${modelItem.modelId}.obj`;
+    const exporter = new OBJExporter()
+    const result = exporter.parse(object)
+    const filename = `${modelItem.modelId}.obj`
 
-    saveAs(new Blob([result]), filename);
+    saveAs(new Blob([result]), filename)
   }
 
   return (
@@ -85,5 +85,5 @@ export function ModelItemSettings({ modelItem }: ModelItemSettingsProps) {
         <Button onClick={exportOBJ}>Export OBJ</Button>
       </div>
     </>
-  );
+  )
 }

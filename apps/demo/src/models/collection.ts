@@ -1,4 +1,4 @@
-import { collectAssetsFromGlob } from '@demo/utils/collectAssetsFromGlob';
+import { collectAssetsFromGlob } from '@demo/utils/collectAssetsFromGlob'
 
 export const MODELS = collectAssetsFromGlob(
   import.meta.glob('/src/assets/mson/**/models/**/*.json', {
@@ -9,4 +9,4 @@ export const MODELS = collectAssetsFromGlob(
   '/src/assets/mson/',
   true,
   true,
-);
+)

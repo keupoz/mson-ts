@@ -11,20 +11,20 @@ npm install three @keupoz/mson-three
 ## Usage
 
 ```typescript
-import { ThreeMsonLoader } from '@keupoz/mson-three';
-import { LoadingManager, Scene } from 'three';
+import { ThreeMsonLoader } from '@keupoz/mson-three'
+import { LoadingManager, Scene } from 'three'
 
-const loadingManager = new LoadingManager();
+const loadingManager = new LoadingManager()
 
 loadingManager.setURLModifier((modelId) => {
-  const [namespace, path] = modelId.split(':');
+  const [namespace, path] = modelId.split(':')
 
-  return `path/to/${namespace}/models/${path}`;
-});
+  return `path/to/${namespace}/models/${path}`
+})
 
-const msonLoader = new ThreeMsonLoader(loadingManager);
-const model = await msonLoader.loadAsync('mson:steve');
-const scene = new Scene();
+const msonLoader = new ThreeMsonLoader(loadingManager)
+const model = await msonLoader.loadAsync('mson:steve')
+const scene = new Scene()
 
-scene.add(model);
+scene.add(model)
 ```

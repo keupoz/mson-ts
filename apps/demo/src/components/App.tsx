@@ -1,8 +1,8 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { AppLayout, ThemeProvider } from '@repo/ui';
-import { Settings } from './Settings';
-import { Preview } from './preview/Preview';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { AppLayout, ThemeProvider } from '@repo/ui'
+import { Preview } from './preview/Preview'
+import { Settings } from './Settings'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -10,7 +10,7 @@ const queryClient = new QueryClient({
       retry: false,
     },
   },
-});
+})
 
 export function App() {
   return (
@@ -25,5 +25,5 @@ export function App() {
         <ReactQueryDevtools />
       </ThemeProvider>
     </QueryClientProvider>
-  );
+  )
 }

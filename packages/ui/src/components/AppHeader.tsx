@@ -1,16 +1,16 @@
-import { MoonIcon, SunIcon } from '@radix-ui/react-icons';
-import { useTheme } from '@ui/hooks/useTheme';
+import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
+import { useTheme } from '@ui/hooks/useTheme'
 import {
   ToggleGroup,
   ToggleGroupItem,
-} from '@ui/shadcn/components/ui/toggle-group';
+} from '@ui/shadcn/components/ui/toggle-group'
 
 export interface AppHeaderProps {
-  appName: string;
+  appName: string
 }
 
 export function AppHeader({ appName }: AppHeaderProps) {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme()
 
   return (
     <div className="flex h-14 items-center px-2">
@@ -34,5 +34,5 @@ export function AppHeader({ appName }: AppHeaderProps) {
         </ToggleGroupItem>
       </ToggleGroup>
     </div>
-  );
+  )
 }

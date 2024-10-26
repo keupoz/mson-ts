@@ -1,15 +1,15 @@
-import type { Intersection, Object3D, Raycaster } from 'three';
+import type { Intersection, Object3D, Raycaster } from 'three'
 
 // Devs decided raycaster shouldn't ignore invisible objects,
 // and they did not allow to disable it so we fix it
 // LAYERS IS NOT A CONVENIENT WAY
 export const FixedRaycaster: Partial<Raycaster> = {
   intersectObject(this: Raycaster, object, recursive = true, intersects = []) {
-    intersect(object, this, intersects, recursive);
+    intersect(object, this, intersects, recursive)
 
-    intersects.sort(ascSort);
+    intersects.sort(ascSort)
 
-    return intersects;
+    return intersects
   },
 
   intersectObjects(
@@ -19,17 +19,17 @@ export const FixedRaycaster: Partial<Raycaster> = {
     intersects = [],
   ) {
     for (const object of objects) {
-      intersect(object, this, intersects, recursive);
+      intersect(object, this, intersects, recursive)
     }
 
-    intersects.sort(ascSort);
+    intersects.sort(ascSort)
 
-    return intersects;
+    return intersects
   },
-};
+}
 
 function ascSort(a: Intersection<Object3D>, b: Intersection<Object3D>) {
-  return a.distance - b.distance;
+  return a.distance - b.distance
 }
 
 function intersect<TIntersected extends Object3D>(
@@ -39,16 +39,16 @@ function intersect<TIntersected extends Object3D>(
   recursive: boolean,
 ) {
   if (!object.visible) {
-    return;
+    return
   }
 
   if (object.layers.test(raycaster.layers)) {
-    object.raycast(raycaster, intersects);
+    object.raycast(raycaster, intersects)
   }
 
   if (recursive === true) {
     for (const child of object.children) {
-      intersect(child, raycaster, intersects, true);
+      intersect(child, raycaster, intersects, true)
     }
   }
 }

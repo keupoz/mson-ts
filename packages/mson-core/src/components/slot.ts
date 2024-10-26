@@ -1,5 +1,5 @@
-import { createComponentType } from '../ComponentRegistry';
-import { SlotSchema } from '../schemas/components/slot';
+import { createComponentType } from '../ComponentRegistry'
+import { SlotSchema } from '../schemas/components/slot'
 
 export const MsonSlot = createComponentType(
   'mson:slot',
@@ -8,15 +8,15 @@ export const MsonSlot = createComponentType(
     const raw
       = typeof json.data === 'string'
         ? await context.loader.fetch(json.data)
-        : { data: json.data };
+        : { data: json.data }
 
     const model = await context.loader.parse(
       name,
       raw,
       json.locals,
       json.texture,
-    );
+    )
 
-    return model;
+    return model
   },
-);
+)

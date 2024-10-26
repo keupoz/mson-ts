@@ -1,6 +1,6 @@
-import { z } from 'zod';
+import { z } from 'zod'
 
-export type Texture = z.infer<typeof TextureSchema>;
+export type Texture = z.infer<typeof TextureSchema>
 
 export const TextureSchema = z
   .object({
@@ -9,4 +9,4 @@ export const TextureSchema = z
     w: z.number().int(),
     h: z.number().int(),
   })
-  .partial();
+  .partial()

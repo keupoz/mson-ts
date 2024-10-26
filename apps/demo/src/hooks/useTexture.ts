@@ -1,26 +1,26 @@
-import { useSuspenseQuery } from '@tanstack/react-query';
-import { NearestFilter, Texture } from 'three';
-import { loadImage } from '../utils/loadImage';
+import { useSuspenseQuery } from '@tanstack/react-query'
+import { NearestFilter, Texture } from 'three'
+import { loadImage } from '../utils/loadImage'
 
 export function useTexture(textureUrl: string) {
   const { error, data } = useSuspenseQuery({
     queryKey: ['texture', textureUrl],
     queryFn: () => loadImage(textureUrl),
     select: (img) => {
-      const texture = new Texture(img);
+      const texture = new Texture(img)
 
-      texture.minFilter = NearestFilter;
-      texture.magFilter = NearestFilter;
+      texture.minFilter = NearestFilter
+      texture.magFilter = NearestFilter
 
-      texture.needsUpdate = true;
+      texture.needsUpdate = true
 
-      return { texture, img };
+      return { texture, img }
     },
-  });
+  })
 
   if (error) {
-    console.error(error);
+    console.error(error)
   }
 
-  return data;
+  return data
 }

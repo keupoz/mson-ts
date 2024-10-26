@@ -1,70 +1,70 @@
-import type { CuboidInfo, ModelInfo, ModelPartInfo } from '@keupoz/mson-core';
-import type { Material } from 'three';
-import { ModelFoundry } from '@keupoz/mson-core';
-import { Group, Mesh } from 'three';
-import { createGeometry } from './createGeometry';
+import type { CuboidInfo, ModelInfo, ModelPartInfo } from '@keupoz/mson-core'
+import type { Material } from 'three'
+import { ModelFoundry } from '@keupoz/mson-core'
+import { Group, Mesh } from 'three'
+import { createGeometry } from './createGeometry'
 
-export type GetMaterial = (name: string) => Material;
+export type GetMaterial = (name: string) => Material
 
 export class ThreeModelFoundry extends ModelFoundry<Group, Group, Mesh> {
-  private readonly getMaterial: GetMaterial;
+  private readonly getMaterial: GetMaterial
 
   constructor(getMaterial: GetMaterial) {
-    super();
+    super()
 
-    this.getMaterial = getMaterial;
+    this.getMaterial = getMaterial
   }
 
   public createModel(info: ModelInfo): Group {
-    const group = new Group();
+    const group = new Group()
     const children = info.children.map((child) => {
-      return this.createChild(child);
-    });
+      return this.createChild(child)
+    })
 
-    group.name = info.name;
+    group.name = info.name
 
     if (children.length) {
-      group.add(...children);
+      group.add(...children)
     }
 
-    return group;
+    return group
   }
 
   public createModelPart(info: ModelPartInfo): Group {
-    const group = new Group();
+    const group = new Group()
 
-    group.name = info.name;
-    group.visible = info.visible;
+    group.name = info.name
+    group.visible = info.visible
 
-    const [x, y, z] = info.position;
-    const [rx, ry, rz] = info.rotation;
+    const [x, y, z] = info.position
+    const [rx, ry, rz] = info.rotation
 
-    group.position.set(x, -y, -z);
-    group.rotation.set(rx, -ry, -rz);
+    group.position.set(x, -y, -z)
+    group.rotation.set(rx, -ry, -rz)
 
     const children = info.children.map((child) => {
-      return this.createChild(child);
-    });
+      return this.createChild(child)
+    })
 
-    const cubes = info.cubes.map(child => this.createCuboid(child));
+    const cubes = info.cubes.map(child => this.createCuboid(child))
 
     if (children.length) {
-      group.add(...children);
+      group.add(...children)
     }
 
     if (cubes.length) {
-      group.add(...cubes);
+      group.add(...cubes)
     }
 
-    return group;
+    return group
   }
 
   public createCuboid(info: CuboidInfo): Mesh {
-    const geometry = createGeometry(info.quads);
-    const mesh = new Mesh(geometry, this.getMaterial(info.name));
+    const geometry = createGeometry(info.quads)
+    const mesh = new Mesh(geometry, this.getMaterial(info.name))
 
-    mesh.name = info.name;
+    mesh.name = info.name
 
-    return mesh;
+    return mesh
   }
 }

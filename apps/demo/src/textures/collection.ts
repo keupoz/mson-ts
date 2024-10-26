@@ -1,4 +1,4 @@
-import { collectAssetsFromGlob } from '@demo/utils/collectAssetsFromGlob';
+import { collectAssetsFromGlob } from '@demo/utils/collectAssetsFromGlob'
 
 export const TEXTURES = collectAssetsFromGlob(
   import.meta.glob('/src/assets/mson/**/textures/**/*.png', {
@@ -7,4 +7,4 @@ export const TEXTURES = collectAssetsFromGlob(
     import: 'default',
   }),
   '/src/assets/mson/',
-);
+)

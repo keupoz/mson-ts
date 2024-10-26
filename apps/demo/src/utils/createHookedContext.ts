@@ -1,11 +1,11 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext } from 'react'
 
 export function createHookedContext<T>(defaultValue: T) {
-  const context = createContext(defaultValue);
+  const context = createContext(defaultValue)
 
   function useHookedContext() {
-    return useContext(context);
+    return useContext(context)
   }
 
-  return [context.Provider, useHookedContext] as const;
+  return [context.Provider, useHookedContext] as const
 }

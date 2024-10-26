@@ -4,28 +4,28 @@ export function collectAssetsFromGlob(
   skipType = false,
   removeExtension = false,
 ) {
-  const result: Record<string, string> = {};
+  const result: Record<string, string> = {}
 
   for (const key in input) {
-    const value = input[key];
+    const value = input[key]
 
     if (!value) {
-      continue;
+      continue
     }
 
-    const [namespace, type, ...path] = key.replace(rootPath, '').split('/');
+    const [namespace, type, ...path] = key.replace(rootPath, '').split('/')
 
     if (namespace === undefined) {
-      throw new Error('Got empty path');
+      throw new Error('Got empty path')
     }
 
-    let newKey = `${namespace}:${skipType ? '' : `${type}/`}${path.join('/')}`;
+    let newKey = `${namespace}:${skipType ? '' : `${type}/`}${path.join('/')}`
 
     if (removeExtension) {
-      newKey = newKey.replace(/\..+$/, '');
+      newKey = newKey.replace(/\..+$/, '')
     }
 
-    result[newKey] = value;
+    result[newKey] = value
   }
-  return result;
+  return result
 }

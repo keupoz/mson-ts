@@ -1,14 +1,14 @@
-import type { PropsWithChildren } from 'react';
-import { ClipboardCopyIcon } from '@radix-ui/react-icons';
-import { copy } from 'clipboard';
-import clsx from 'clsx';
-import { Label } from '@ui/shadcn/components/ui/label';
+import type { PropsWithChildren } from 'react'
+import { ClipboardCopyIcon } from '@radix-ui/react-icons'
+import { copy } from 'clipboard'
+import clsx from 'clsx'
+import { Label } from '@ui/shadcn/components/ui/label'
 
 export interface InputWithLabelProps extends PropsWithChildren {
-  label: string;
-  id: string;
-  valueToCopy?: string;
-  wideLabel?: boolean;
+  label: string
+  id: string
+  valueToCopy?: string
+  wideLabel?: boolean
 }
 
 export function InputWithLabel({
@@ -44,5 +44,5 @@ export function InputWithLabel({
 
       {children}
     </div>
-  );
+  )
 }

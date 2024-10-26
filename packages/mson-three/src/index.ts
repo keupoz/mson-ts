@@ -1,3 +1,3 @@
-export * from './ThreeModelFoundry';
-export * from './ThreeMsonLoader';
-export * from './createGeometry';
+export * from './createGeometry'
+export * from './ThreeModelFoundry'
+export * from './ThreeMsonLoader'

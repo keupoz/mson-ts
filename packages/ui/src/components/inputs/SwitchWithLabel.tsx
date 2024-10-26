@@ -1,11 +1,11 @@
-import { useId } from 'react';
-import { Switch } from '@ui/shadcn/components/ui/switch';
-import { InputWithLabel } from './InputWithLabel';
+import { useId } from 'react'
+import { Switch } from '@ui/shadcn/components/ui/switch'
+import { InputWithLabel } from './InputWithLabel'
 
 export interface SwitchWithLabelProps {
-  label: string;
-  checked: boolean;
-  onChange: (value: boolean) => void;
+  label: string
+  checked: boolean
+  onChange: (value: boolean) => void
 }
 
 export function SwitchWithLabel({
@@ -13,7 +13,7 @@ export function SwitchWithLabel({
   checked,
   onChange,
 }: SwitchWithLabelProps) {
-  const id = useId();
+  const id = useId()
 
   return (
     <InputWithLabel label={label} id={id} wideLabel>
@@ -24,5 +24,5 @@ export function SwitchWithLabel({
         onCheckedChange={value => onChange(value)}
       />
     </InputWithLabel>
-  );
+  )
 }

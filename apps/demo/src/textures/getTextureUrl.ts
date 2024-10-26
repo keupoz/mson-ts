@@ -1,11 +1,11 @@
-import { TEXTURES } from './collection';
+import { TEXTURES } from './collection'
 
 export function getTextureUrl(textureId: string) {
-  const textureUrl = TEXTURES[textureId];
+  const textureUrl = TEXTURES[textureId]
 
   if (!textureUrl) {
-    throw new Error(`Unregistered texture "${textureId}"`);
+    throw new Error(`Unregistered texture "${textureId}"`)
   }
 
-  return textureUrl;
+  return textureUrl
 }
