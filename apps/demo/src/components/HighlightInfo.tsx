@@ -1,4 +1,5 @@
 import type { Vector3Like } from 'three'
+import { Affix, Paper } from '@mantine/core'
 import { Euler, MathUtils, Quaternion, Vector3 } from 'three'
 import { useAppState } from '@demo/state/appState'
 
@@ -25,14 +26,18 @@ export function HighlightInfo() {
   }
 
   return (
-    <ul className="absolute left-2 top-2 z-10 list-none bg-zinc-800/50 p-2 font-mono text-white">
-      <li>{`Parent: ${parentName}`}</li>
-      <li>{`Name: ${objectName}`}</li>
-      <li>{`Material: ${materialName}`}</li>
-      <li>{`Geometry size: ${vectorString(size)}`}</li>
-      <li>{`World position: ${vectorString(position)}`}</li>
-      <li>{`World rotation: ${rotationString(quaternion)}`}</li>
-    </ul>
+    <Affix position={{ left: 8, bottom: 8 }} zIndex={100}>
+      <Paper withBorder pr="md" ff="monospace">
+        <ul>
+          <li>{`Parent: ${parentName}`}</li>
+          <li>{`Name: ${objectName}`}</li>
+          <li>{`Material: ${materialName}`}</li>
+          <li>{`Geometry size: ${vectorString(size)}`}</li>
+          <li>{`World position: ${vectorString(position)}`}</li>
+          <li>{`World rotation: ${rotationString(quaternion)}`}</li>
+        </ul>
+      </Paper>
+    </Affix>
   )
 }
 

@@ -1,12 +1,13 @@
+import { useComputedColorScheme, useMantineTheme } from '@mantine/core'
 import { Grid } from '@react-three/drei'
 import { DoubleSide } from 'three'
 import { useAppState } from '@demo/state/appState'
-import { useTheme } from '@repo/ui'
 
 export function SceneGrid() {
   const showGrid = useAppState(state => state.showGrid)
-  const { isDark } = useTheme()
-  const dividerColor = isDark ? 0x52525B : 0xE4E4E7
+  const colorScheme = useComputedColorScheme()
+  const { colors } = useMantineTheme()
+  const dividerColor = colorScheme === 'dark' ? colors.dark[2] : colors.gray[2]
 
   return (
     <Grid

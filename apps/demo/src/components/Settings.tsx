@@ -1,7 +1,9 @@
+import { Button, Divider, SimpleGrid, Stack } from '@mantine/core'
 import { useState } from 'react'
 import { MODEL_PRESETS } from '@demo/models/presets'
 import { setAppState, useAppState } from '@demo/state/appState'
-import { Button, ComboboxWithLabel, Separator, SwitchWithLabel } from '@repo/ui'
+import { Select } from '@demo/ui/Select'
+import { Switch } from '@demo/ui/Switch'
 import { ModelItemSettings } from './settings/ModelItemSettings'
 
 const presetKeys = Object.keys(MODEL_PRESETS)
@@ -36,42 +38,44 @@ export function Settings() {
   }
 
   return (
-    <div className="flex flex-col gap-2 p-2">
-      <SwitchWithLabel
+    <>
+      <Switch
         label="Smooth camera"
         checked={smoothCamera}
-        onChange={smoothCamera => setAppState({ smoothCamera })}
+        onChange={e => setAppState({ smoothCamera: e.currentTarget.checked })}
       />
 
-      <SwitchWithLabel
+      <Switch
         label="Show grid"
         checked={showGrid}
-        onChange={showGrid => setAppState({ showGrid })}
+        onChange={e => setAppState({ showGrid: e.currentTarget.checked })}
       />
 
-      <SwitchWithLabel
+      <Switch
         label="Enable light"
         checked={enableLight}
-        onChange={enableLight => setAppState({ enableLight })}
+        onChange={e => setAppState({ enableLight: e.currentTarget.checked })}
       />
 
-      <Separator />
+      <Divider />
 
-      <ComboboxWithLabel
-        label="Preset"
-        options={presetKeys}
-        value={presetName}
-        onChange={preset => setPresetName(preset)}
-      />
+      <Stack gap="xs">
+        <Select
+          label="Preset"
+          data={presetKeys}
+          value={presetName}
+          onChange={preset => preset && setPresetName(preset)}
+        />
 
-      <div className="grid grid-cols-2 gap-2">
-        <Button onClick={applyPreset}>Use preset</Button>
-        <Button onClick={addPreset}>Add preset</Button>
-      </div>
+        <SimpleGrid cols={2} spacing="xs">
+          <Button variant="default" onClick={applyPreset}>Replace scene</Button>
+          <Button variant="default" onClick={addPreset}>Add to scene</Button>
+        </SimpleGrid>
+      </Stack>
 
       {models.map(item => (
         <ModelItemSettings key={item.id} modelItem={item} />
       ))}
-    </div>
+    </>
   )
 }

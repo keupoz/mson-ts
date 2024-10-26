@@ -1,8 +1,0 @@
-{
-  "extends": "@repo/typescript-config/lib.ui.json",
-  "compilerOptions": {
-    "paths": {
-      "@ui/*": ["./src/*"]
-    }
-  }
-}

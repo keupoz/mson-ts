@@ -1,3 +1,4 @@
+import { Button, Divider, SimpleGrid, Stack } from '@mantine/core'
 import { saveAs } from 'file-saver'
 import { GLTFExporter, OBJExporter } from 'three/addons'
 import { MODELS } from '@demo/models/collection'
@@ -5,7 +6,7 @@ import type { ModelItem } from '@demo/models/createModelItem'
 import { getAppState } from '@demo/state/appState'
 import { updateModel } from '@demo/state/updateModel'
 import { TEXTURES } from '@demo/textures/collection'
-import { Button, ComboboxWithLabel, Separator } from '@repo/ui'
+import { Select } from '@demo/ui/Select'
 
 const modelKeys = Object.keys(MODELS)
 const textureKeys = Object.keys(TEXTURES)
@@ -64,26 +65,28 @@ export function ModelItemSettings({ modelItem }: ModelItemSettingsProps) {
 
   return (
     <>
-      <Separator />
+      <Divider />
 
-      <ComboboxWithLabel
-        label="Model"
-        options={modelKeys}
-        value={modelItem.modelId}
-        onChange={modelId => updateModel(modelItem.id, { modelId })}
-      />
+      <Stack gap="xs">
+        <Select
+          label="Model"
+          data={modelKeys}
+          value={modelItem.modelId}
+          onChange={modelId => modelId && updateModel(modelItem.id, { modelId })}
+        />
 
-      <ComboboxWithLabel
-        label="Texture"
-        options={textureKeys}
-        value={modelItem.textureId}
-        onChange={textureId => updateModel(modelItem.id, { textureId })}
-      />
+        <Select
+          label="Texture"
+          data={textureKeys}
+          value={modelItem.textureId}
+          onChange={textureId => textureId && updateModel(modelItem.id, { textureId })}
+        />
 
-      <div className="grid grid-cols-2 gap-2">
-        <Button onClick={exportGLTF}>Export GLTF</Button>
-        <Button onClick={exportOBJ}>Export OBJ</Button>
-      </div>
+        <SimpleGrid cols={2} spacing="xs">
+          <Button variant="default" onClick={exportGLTF}>Export GLTF</Button>
+          <Button variant="default" onClick={exportOBJ}>Export OBJ</Button>
+        </SimpleGrid>
+      </Stack>
     </>
   )
 }

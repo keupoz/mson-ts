@@ -9,11 +9,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@keupoz/mson-core": "workspace:^",
     "@keupoz/mson-three": "workspace:^",
+    "@mantine/core": "^7.13.4",
+    "@mantine/hooks": "^7.13.4",
     "@react-three/drei": "^9.112.0",
     "@react-three/fiber": "^8.17.7",
-    "@repo/ui": "workspace:^",
     "@tanstack/react-query": "^5.56.2",
     "@tanstack/react-query-devtools": "^5.56.2",
     "camera-controls": "^2.9.0",
