@@ -44,7 +44,7 @@ export function ModelItemSettings({ modelItem }: ModelItemSettingsProps) {
 
         saveAs(new Blob([data]), filename)
       },
-      // TODO Replace with Shadcn alternative
+      // TODO Replace with UI library alternative. But do I actually need to?..
       // eslint-disable-next-line no-alert
       () => alert('Failed to export model'),
     )
