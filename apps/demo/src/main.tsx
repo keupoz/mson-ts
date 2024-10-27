@@ -5,7 +5,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { App } from './components/App'
 import '@mantine/core/styles.css'
-import './main.css'
+import './main.scss'
 
 const queryClient = new QueryClient({
   defaultOptions: {
