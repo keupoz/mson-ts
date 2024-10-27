@@ -10,7 +10,6 @@ import { ResetFocusProvider } from './ResetFocusContext'
 export function FocusSelect({ children }: PropsWithChildren) {
   const controls = useThree(ctx => ctx.controls)
   const groupRef = useRef<Group>(null)
-  const timeoutId = useRef<number>()
 
   function setFocus(object: Object3D) {
     if (controls instanceof CameraControls) {
@@ -30,21 +29,15 @@ export function FocusSelect({ children }: PropsWithChildren) {
     }
   }
 
+  // Memoized for the context value
   const resetFocus = useCallback(() => {
-    if (timeoutId.current !== undefined) {
-      clearTimeout(timeoutId.current)
-      timeoutId.current = undefined
-    }
+    const group = groupRef.current
 
-    setTimeout(() => {
-      if (groupRef.current && controls instanceof CameraControls) {
-        try {
-          controls.fitToSphere(groupRef.current, true)
-        } catch (error) {
-          console.error(error)
-        }
-      }
-    }, 1)
+    if (group && controls instanceof CameraControls) {
+      requestAnimationFrame(() => {
+        controls.fitToSphere(group, true)
+      })
+    }
   }, [controls])
 
   function handleMissed(e: MouseEvent) {
