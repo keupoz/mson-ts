@@ -8,47 +8,106 @@
       "implementation": "com.minelittlepony.client.model.part.PonyWings$Wing",
       "data": {
         "folded": {
-          "texture": { "u": 56, "v": 16, "w": 64, "h": 64 },
+          "texture": { "u": 60, "v": 43, "w": 64, "h": 64 },
           "rotate": [90, 0, 0],
-          "pivot": [-0.5, 12, -4],
-          "cubes": [
-            { "from": [3.15, 5, 4], "size": [1, 4, 1] },
-            { "from": [3.5, 5, 6], "size": [1, 7, 1] },
-            { "from": [3.5, 5, 5], "size": [1, 6, 1] },
-            { "from": [3.15, 5, 7], "size": [1, 7, 1] }
-          ]
-        },
-        "extended": {
-          "texture": { "u": 56, "v": 19, "w": 64, "h": 64 },
-          "rotate": [3, 180, -140],
-          "pivot": [2.5, 5.3, 3],
+          "pivot": [3, 14, -4],
           "children": {
-            "bones": {
-              "texture": { "u": 60, "v": 16 },
-              "rotate": [0.1, 0, 0],
+            "hinge_1": {
+              "pivot": [0, 7, 9],
+              "rotate": [12, 0, 0],
               "cubes": [
-                { "from": [-0.5, -1, 0], "size": [1, 8, 1], "dilate": 0.001 }
+                { "from": [0, 0, 0], "size": [1, 8, 1] }
               ],
               "children": {
-                "bone_1": {
-                  "texture": { "u": 60, "v": 16 },
-                  "rotate": [-28, 0, 0],
-                  "pivot": [0, -1, -2],
+                "hinge_2": {
+                  "texture": { "u": 56 },
+                  "pivot": [0, -2, -2.6],
+                  "rotate": [50, 0, 0],
                   "cubes": [
-                    { "from": [-0.5, 0, 2], "size": [1, 7, 1] }
-                  ]
-                },
-                "bone_2": {
-                  "texture": { "u": 60, "v": 16 },
-                  "rotate": [-28, 0, 0],
-                  "pivot": [0, 4, -2.4],
+                    { "from": [0, 0, 0], "size": [1, 4, 1] }
+                  ],
+                  "children": {
+                    "claw": {
+                      "texture": { "u": 52, "v": 34 },
+                      "rotate": [45, 0, 0],
+                      "pivot": [0, 0, 0],
+                      "cubes": [
+                        { "from": [0, 0, 0], "size": [1, 1, 1], "dilate": [-0.2, 0, -0.2] }
+                      ]
+                    },
+                    "thumb": {
+                      "texture": { "u": 60 },
+                      "type": "mson:planar",
+                      "pivot": [0, 2, 0],
+                      "rotate": [-70, 0, 0],
+                      "cubes": [
+                        { "from": [0, 0, 0], "size": [1, 8, 1] }
+                      ],
+                      "west": [0.5, -0.75, -2.5, 6, 8, 58, 35, false, true]
+                    },
+                    "toe": {
+                      "texture": { "u": 60 },
+                      "pivot": [0, 0, 0],
+                      "rotate": [-80, 0, 0],
+                      "cubes": [
+                        { "from": [0, 0, 0], "size": [1, 8, 1] }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "extended": {
+          "texture": { "w": 64, "h": 64 },
+          "rotate": [-15, 180, -140],
+          "pivot": [2.5, 5.3, 3],
+          "children": {
+            "membrane": {
+              "type": "mson:planar",
+              "west": [0.1, 0, -3, 8, 19, 56, 16, true, false]
+            },
+            "base_joint": {
+              "texture": { "u": 56, "v": 43 },
+              "pivot": [0, 0, 0],
+              "cubes": [
+                { "from": [0, 0, 0], "size": [1, 4, 1] }
+              ],
+              "children": {
+                "hinge_1": {
+                  "texture": { "u": 60 },
+                  "rotate": [32.5, 0, 0],
+                  "pivot": [0, 4, 0],
                   "cubes": [
-                    { "from": [-0.5, 0, 3], "size": [1, 7, 1] }
-                  ]
-                },
-                "skin": {
-                  "type": "mson:planar",
-                  "west": [0, 0, -7, 8, 16, 56, 32]
+                    { "from": [0, 0, 0], "size": [1, 8, 1] }
+                  ],
+                  "children": {
+                    "hinge_2": {
+                      "rotate": [-140, 0, 0],
+                      "pivot": [0, 7, 0.5],
+                      "cubes": [
+                        { "from": [0, 0, 0], "size": [1, 8, 1] }
+                      ],
+                      "children": {
+                        "toe": {
+                          "rotate": [90, 0, 0],
+                          "pivot": [0, 0, 0],
+                          "cubes": [
+                            { "from": [0, 0, 0], "size": [1, 8, 1] }
+                          ]
+                        },
+                        "claw": {
+                          "rotate": [45, 0, 0],
+                          "pivot": [0, 0, 0],
+                          "cubes": [
+                            { "from": [0, 0, 0], "size": [1, 8, 1] },
+                            { "from": [0, -1.5, 0], "size": [1, 1, 1], "dilate": [-0.2, 0, -0.2], "texture": { "u": 52, "v": 34 } }
+                          ]
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -60,51 +119,108 @@
       "implementation": "com.minelittlepony.client.model.part.PonyWings$Wing",
       "data": {
         "folded": {
-          "texture": { "u": 56, "v": 16, "w": 64, "h": 64 },
+          "texture": { "u": 60, "v": 43, "w": 64, "h": 64 },
           "rotate": [90, 0, 0],
-          "pivot": [-0.5, 12, -4],
+          "pivot": [-4, 14, -4],
           "mirror": true,
-          "cubes": [
-            { "from": [-3.15, 5, 4], "size": [1, 4, 1] },
-            { "from": [-3.5, 5, 6], "size": [1, 7, 1] },
-            { "from": [-3.5, 5, 5], "size": [1, 6, 1] },
-            { "from": [-3.15, 5, 7], "size": [1, 7, 1] }
-          ]
+          "children": {
+            "hinge_1": {
+              "pivot": [0, 7, 9],
+              "rotate": [12, 0, 0],
+              "cubes": [
+                { "from": [0, 0, 0], "size": [1, 8, 1] }
+              ],
+              "children": {
+                "hinge_2": {
+                  "texture": { "u": 56 },
+                  "pivot": [0, -2, -2.6],
+                  "rotate": [50, 0, 0],
+                  "cubes": [
+                    { "from": [0, 0, 0], "size": [1, 4, 1] }
+                  ],
+                  "children": {
+                    "claw": {
+                      "texture": { "u": 52, "v": 34 },
+                      "rotate": [45, 0, 0],
+                      "pivot": [0, 0, 0],
+                      "cubes": [
+                        { "from": [0, 0, 0], "size": [1, 1, 1], "dilate": [-0.2, 0, -0.2] }
+                      ]
+                    },
+                    "thumb": {
+                      "texture": { "u": 60 },
+                      "type": "mson:planar",
+                      "pivot": [0, 2, 0],
+                      "rotate": [-70, 0, 0],
+                      "cubes": [
+                        { "from": [0, 0, 0], "size": [1, 8, 1] }
+                      ],
+                      "east": [0.5, -0.75, -2.5, 6, 8, 58, 35, true, true]
+                    },
+                    "toe": {
+                      "texture": { "u": 60 },
+                      "pivot": [0, 0, 0],
+                      "rotate": [-80, 0, 0],
+                      "cubes": [
+                        { "from": [0, 0, 0], "size": [1, 8, 1] }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
         "extended": {
           "texture": { "u": 56, "v": 19, "w": 64, "h": 64 },
-          "pivot": [-2.5, 5.3, 3],
-          "rotate": [-3, 180, 0],
+          "pivot": [-2.5, 6.3, 3],
+          "rotate": [-15, 180, 0],
           "mirror": true,
           "children": {
-            "bones": {
-              "texture": { "u": 60, "v": 16 },
-              "rotate": [5.7, 0, 0],
+            "membrane": {
+              "type": "mson:planar",
+              "east": [0.9, 0, -3, 8, 19, 56, 16, false, false]
+            },
+            "base_joint": {
+              "texture": { "u": 56, "v": 43 },
+              "pivot": [0, 0, 0],
               "cubes": [
-                { "from": [-0.5, -1, 0], "size": [1, 8, 1], "dilate": 0.001 }
+                { "from": [0, 0, 0], "size": [1, 4, 1] }
               ],
               "children": {
-                "bone_1": {
-                  "texture": { "u": 60, "v": 16 },
-                  "rotate": [-28, 0, 0],
-                  "pivot": [0, -1, -2],
-                  "mirror": true,
+                "hinge_1": {
+                  "texture": { "u": 60 },
+                  "rotate": [32.5, 0, 0],
+                  "pivot": [0, 4, 0],
                   "cubes": [
-                    { "from": [-0.5, 0, 2], "size": [1, 7, 1] }
-                  ]
-                },
-                "bone_2": {
-                  "texture": { "u": 60, "v": 16 },
-                  "rotate": [-28, 0, 0],
-                  "pivot": [0, 4, -2.4],
-                  "mirror": true,
-                  "cubes": [
-                    { "from": [-0.5, 0, 3], "size": [1, 7, 1] }
-                  ]
-                },
-                "skin": {
-                  "type": "mson:planar",
-                  "east": [0, 0, -7, 8, 16, 56, 32, true, false]
+                    { "from": [0, 0, 0], "size": [1, 8, 1] }
+                  ],
+                  "children": {
+                    "hinge_2": {
+                      "rotate": [-140, 0, 0],
+                      "pivot": [0, 7, 0.5],
+                      "cubes": [
+                        { "from": [0, 0, 0], "size": [1, 8, 1] }
+                      ],
+                      "children": {
+                        "toe": {
+                          "rotate": [90, 0, 0],
+                          "pivot": [0, 0, 0],
+                          "cubes": [
+                            { "from": [0, 0, 0], "size": [1, 8, 1] }
+                          ]
+                        },
+                        "claw": {
+                          "rotate": [45, 0, 0],
+                          "pivot": [0, 0, 0],
+                          "cubes": [
+                            { "from": [0, 0, 0], "size": [1, 8, 1] },
+                            { "from": [0, -1.5, 0], "size": [1, 1, 1], "dilate": [-0.2, 0, -0.2], "texture": { "u": 52, "v": 34 } }
+                          ]
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
