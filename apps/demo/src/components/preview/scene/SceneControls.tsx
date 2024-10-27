@@ -1,5 +1,5 @@
-import { CameraControls } from '@react-three/drei'
 import { useAppState } from '@demo/state/appState'
+import { CameraControls } from '../CameraControls'
 
 export function SceneControls() {
   const smoothCamera = useAppState(state => state.smoothCamera)
