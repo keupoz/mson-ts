@@ -1,5 +1,5 @@
 import { Select as MantineSelect, type SelectProps, Text } from '@mantine/core'
-import { forwardRef } from 'react'
+import { forwardRef, memo } from 'react'
 import classes from './Select.module.scss'
 
 const renderSelectOption: SelectProps['renderOption'] = ({ option }) => (
@@ -8,7 +8,7 @@ const renderSelectOption: SelectProps['renderOption'] = ({ option }) => (
   </Text>
 )
 
-export const Select = forwardRef<HTMLInputElement, SelectProps>((props, ref) => {
+export const Select = memo(forwardRef<HTMLInputElement, SelectProps>((props, ref) => {
   return (
     <MantineSelect
       ref={ref}
@@ -20,4 +20,4 @@ export const Select = forwardRef<HTMLInputElement, SelectProps>((props, ref) => 
       {...props}
     />
   )
-})
+}))

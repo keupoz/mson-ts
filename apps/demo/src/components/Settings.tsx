@@ -14,9 +14,13 @@ export function Settings() {
   const enableLight = useAppState(state => state.enableLight)
   const models = useAppState(state => state.models)
 
-  const [presetName, setPresetName] = useState(presetKeys[0] ?? 'No presets')
+  const [presetName, setPresetName] = useState(presetKeys[0] ?? null)
 
   function resolvePreset() {
+    if (!presetName) {
+      throw new Error('No preset selected')
+    }
+
     const preset = MODEL_PRESETS[presetName]
 
     if (!preset) {
@@ -67,7 +71,7 @@ export function Settings() {
           label="Preset"
           data={presetKeys}
           value={presetName}
-          onChange={preset => preset && setPresetName(preset)}
+          onChange={setPresetName}
         />
 
         <SimpleGrid cols={2} spacing="xs">

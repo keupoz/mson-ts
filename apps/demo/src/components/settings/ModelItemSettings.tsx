@@ -1,5 +1,6 @@
 import { Button, Divider, SimpleGrid, Stack } from '@mantine/core'
 import { saveAs } from 'file-saver'
+import { useCallback } from 'react'
 import { GLTFExporter, OBJExporter } from 'three/addons'
 import { MODELS } from '@demo/models/collection'
 import type { ModelItem } from '@demo/models/createModelItem'
@@ -63,6 +64,18 @@ export function ModelItemSettings({ modelItem }: ModelItemSettingsProps) {
     saveAs(new Blob([result]), filename)
   }
 
+  const updateModelId = useCallback((modelId: string | null) => {
+    if (modelId) {
+      updateModel(modelItem.id, { modelId })
+    }
+  }, [modelItem.id])
+
+  const updateTextureId = useCallback((textureId: string | null) => {
+    if (textureId) {
+      updateModel(modelItem.id, { textureId })
+    }
+  }, [modelItem.id])
+
   return (
     <>
       <Divider />
@@ -72,14 +85,14 @@ export function ModelItemSettings({ modelItem }: ModelItemSettingsProps) {
           label="Model"
           data={modelKeys}
           value={modelItem.modelId}
-          onChange={modelId => modelId && updateModel(modelItem.id, { modelId })}
+          onChange={updateModelId}
         />
 
         <Select
           label="Texture"
           data={textureKeys}
           value={modelItem.textureId}
-          onChange={textureId => textureId && updateModel(modelItem.id, { textureId })}
+          onChange={updateTextureId}
         />
 
         <SimpleGrid cols={2} spacing="xs">
