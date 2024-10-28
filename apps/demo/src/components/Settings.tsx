@@ -1,9 +1,7 @@
-import { Button, Divider, SimpleGrid, Stack } from '@mantine/core'
+import { Button, Divider, Select, SimpleGrid, Stack, Switch } from '@mantine/core'
 import { useState } from 'react'
 import { MODEL_PRESETS } from '@demo/models/presets'
 import { setAppState, useAppState } from '@demo/state/appState'
-import { Select } from '@demo/ui/Select'
-import { Switch } from '@demo/ui/Switch'
 import { ModelItemSettings } from './settings/ModelItemSettings'
 
 const presetKeys = Object.keys(MODEL_PRESETS)

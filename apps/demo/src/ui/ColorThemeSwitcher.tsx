@@ -1,7 +1,6 @@
 import { faLaptop, faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { SegmentedControl, type SegmentedControlProps, useMantineColorScheme } from '@mantine/core'
-import { Tooltip } from './Tooltip'
+import { SegmentedControl, type SegmentedControlProps, Tooltip, useMantineColorScheme } from '@mantine/core'
 
 export function ColorThemeSwitcher() {
   const { colorScheme, setColorScheme } = useMantineColorScheme({ keepTransitions: true })

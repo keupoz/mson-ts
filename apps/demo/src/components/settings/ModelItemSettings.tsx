@@ -1,4 +1,4 @@
-import { Button, Divider, SimpleGrid, Stack } from '@mantine/core'
+import { Button, Divider, Select, SimpleGrid, Stack } from '@mantine/core'
 import { saveAs } from 'file-saver'
 import { useCallback } from 'react'
 import { GLTFExporter, OBJExporter } from 'three/addons'
@@ -7,7 +7,6 @@ import type { ModelItem } from '@demo/models/createModelItem'
 import { getAppState } from '@demo/state/appState'
 import { updateModel } from '@demo/state/updateModel'
 import { TEXTURES } from '@demo/textures/collection'
-import { Select } from '@demo/ui/Select'
 
 const modelKeys = Object.keys(MODELS)
 const textureKeys = Object.keys(TEXTURES)
