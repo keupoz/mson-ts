@@ -1,9 +1,9 @@
 import { AppShell, Burger, Group, ScrollArea, Stack, Text } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
-import { ColorThemeSwitcher } from '@demo/ui/ColorThemeSwitcher'
 import { HighlightInfo } from './HighlightInfo'
 import { Preview } from './preview/Preview'
 import { Settings } from './Settings'
+import { ColorThemeSwitcher } from './settings/ColorThemeSwitcher'
 
 export function App() {
   const [opened, { toggle }] = useDisclosure()
