@@ -3,7 +3,6 @@ import { createModelItem, type ModelItem } from '@demo/models/createModelItem'
 import { createImmerStore } from './createImmerStore'
 
 export interface AppState {
-  smoothCamera: boolean
   showGrid: boolean
   enableLight: boolean
 
@@ -14,7 +13,6 @@ export interface AppState {
 }
 
 export const useAppState = createImmerStore<AppState>(() => ({
-  smoothCamera: false,
   showGrid: true,
   enableLight: true,
 

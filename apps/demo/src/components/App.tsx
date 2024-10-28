@@ -15,7 +15,6 @@ const AppContent = (
         <Stack gap="md">
           <ColorThemeSwitcher />
 
-          <StateSwitch label="Smooth camera" stateProp="smoothCamera" />
           <StateSwitch label="Show grid" stateProp="showGrid" />
           <StateSwitch label="Enable light" stateProp="enableLight" />
 
