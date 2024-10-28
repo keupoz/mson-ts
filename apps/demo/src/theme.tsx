@@ -1,4 +1,5 @@
-import { createTheme, Select, type SelectProps, Switch, Text, Tooltip } from '@mantine/core'
+import { createTheme, ScrollArea, Select, type SelectProps, Switch, Text, Tooltip } from '@mantine/core'
+import ScrollAreaClassNames from './styles/ScrollArea.module.scss'
 import SelectClassNames from './styles/Select.module.scss'
 import SwitchClassNames from './styles/Switch.module.scss'
 import '@mantine/core/styles.css'
@@ -12,6 +13,10 @@ const renderSelectOption: SelectProps['renderOption'] = ({ option }) => (
 
 export const theme = createTheme({
   components: {
+    ScrollArea: ScrollArea.extend({
+      classNames: ScrollAreaClassNames,
+    }),
+
     Select: Select.extend({
       classNames: SelectClassNames,
       defaultProps: {

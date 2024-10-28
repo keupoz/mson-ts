@@ -1,4 +1,4 @@
-import { AppShell, Burger, Group, Stack, Text } from '@mantine/core'
+import { AppShell, Burger, Group, ScrollArea, Stack, Text } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { ColorThemeSwitcher } from '@demo/ui/ColorThemeSwitcher'
 import { HighlightInfo } from './HighlightInfo'
@@ -22,11 +22,13 @@ export function App() {
       </AppShell.Header>
 
       <AppShell.Aside p="sm">
-        <Stack gap="md">
-          <ColorThemeSwitcher />
+        <ScrollArea>
+          <Stack gap="md">
+            <ColorThemeSwitcher />
 
-          <Settings />
-        </Stack>
+            <Settings />
+          </Stack>
+        </ScrollArea>
       </AppShell.Aside>
 
       <AppShell.Main h="100dvh">
