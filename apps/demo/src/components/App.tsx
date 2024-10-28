@@ -1,9 +1,38 @@
-import { AppShell, Burger, Group, ScrollArea, Stack, Text } from '@mantine/core'
+import { AppShell, Burger, Divider, Group, ScrollArea, Stack, Text } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { HighlightInfo } from './HighlightInfo'
 import { Preview } from './preview/Preview'
-import { Settings } from './Settings'
 import { ColorThemeSwitcher } from './settings/ColorThemeSwitcher'
+import { ModelsSettings } from './settings/ModelsSettings'
+import { PresetsSelect } from './settings/PresetsSelect'
+import { StateSwitch } from './settings/StateSwitch'
+
+// This magically enables memoization
+const AppContent = (
+  <>
+    <AppShell.Aside p="sm">
+      <ScrollArea>
+        <Stack gap="md">
+          <ColorThemeSwitcher />
+
+          <StateSwitch label="Smooth camera" stateProp="smoothCamera" />
+          <StateSwitch label="Show grid" stateProp="showGrid" />
+          <StateSwitch label="Enable light" stateProp="enableLight" />
+
+          <Divider />
+
+          <PresetsSelect />
+          <ModelsSettings />
+        </Stack>
+      </ScrollArea>
+    </AppShell.Aside>
+
+    <AppShell.Main h="100dvh">
+      <HighlightInfo />
+      <Preview />
+    </AppShell.Main>
+  </>
+)
 
 export function App() {
   const [opened, { toggle }] = useDisclosure()
@@ -21,20 +50,7 @@ export function App() {
         </Group>
       </AppShell.Header>
 
-      <AppShell.Aside p="sm">
-        <ScrollArea>
-          <Stack gap="md">
-            <ColorThemeSwitcher />
-
-            <Settings />
-          </Stack>
-        </ScrollArea>
-      </AppShell.Aside>
-
-      <AppShell.Main h="100dvh">
-        <HighlightInfo />
-        <Preview />
-      </AppShell.Main>
+      {AppContent}
     </AppShell>
   )
 }
