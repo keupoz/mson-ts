@@ -7,6 +7,4 @@ export const MODELS = collectAssetsFromGlob(
     import: 'default',
   }),
   '/src/assets/mson/',
-  true,
-  true,
 )
