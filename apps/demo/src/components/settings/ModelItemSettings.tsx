@@ -1,10 +1,12 @@
-import { Button, Divider, Select, SimpleGrid, Stack } from '@mantine/core'
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { ActionIcon, Button, Divider, Group, Select, SimpleGrid, Stack } from '@mantine/core'
 import { saveAs } from 'file-saver'
 import { useCallback } from 'react'
 import { GLTFExporter, OBJExporter } from 'three/addons'
 import { MODELS } from '@demo/models/collection'
 import type { ModelItem } from '@demo/models/createModelItem'
-import { getAppState } from '@demo/state/appState'
+import { getAppState, setAppState } from '@demo/state/appState'
 import { updateModel } from '@demo/state/updateModel'
 import { TEXTURES } from '@demo/textures/collection'
 
@@ -75,6 +77,10 @@ export function ModelItemSettings({ modelItem }: ModelItemSettingsProps) {
     }
   }, [modelItem.id])
 
+  function removeModel() {
+    setAppState(state => ({ models: state.models.filter(model => model.id !== modelItem.id) }))
+  }
+
   return (
     <>
       <Divider />
@@ -94,10 +100,18 @@ export function ModelItemSettings({ modelItem }: ModelItemSettingsProps) {
           onChange={updateTextureId}
         />
 
-        <SimpleGrid cols={2} spacing="xs">
-          <Button variant="default" onClick={exportGLTF}>Export GLTF</Button>
-          <Button variant="default" onClick={exportOBJ}>Export OBJ</Button>
-        </SimpleGrid>
+        <Group gap="xs">
+          <Button.Group flex="1">
+            <SimpleGrid cols={2} spacing={0} flex="1">
+              <Button variant="default" onClick={exportGLTF}>Export GLTF</Button>
+              <Button variant="default" onClick={exportOBJ}>Export OBJ</Button>
+            </SimpleGrid>
+          </Button.Group>
+
+          <ActionIcon aria-label="Remove model" variant="filled" color="red" size="input-sm" onClick={removeModel}>
+            <FontAwesomeIcon icon={faTrashCan} />
+          </ActionIcon>
+        </Group>
       </Stack>
     </>
   )
