@@ -8,7 +8,7 @@ on:
 concurrency: '${{ github.workflow }}-${{ github.ref }}'
 
 jobs:
-  build:
+  build-and-publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,12 +21,19 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm run build
 
+      - uses: changesets/action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        with:
+          publish: pnpm publish -r
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./apps/demo/dist
 
   deploy:
-    needs: build
+    needs: build-and-publish
 
     permissions:
       pages: write
@@ -41,15 +48,3 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
-
-  publish:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: changesets/action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        with:
-          publish: pnpm publish -r
