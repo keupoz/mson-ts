@@ -15,7 +15,7 @@
     "lint": "eslint . --max-warnings 0"
   },
   "peerDependencies": {
-    "three": "^0.165.0"
+    "three": ">=0.169.0"
   },
   "dependencies": {
     "@keupoz/mson-core": "workspace:^"
