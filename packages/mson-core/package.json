@@ -3,6 +3,10 @@
   "type": "module",
   "version": "1.0.0",
   "description": "Core package of TypeScript MSON port",
+  "homepage": "https://github.com/keupoz/mson-ts/tree/main/packages/mson-core",
+  "repository": {
+    "url": "https://github.com/keupoz/mson-ts"
+  },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
