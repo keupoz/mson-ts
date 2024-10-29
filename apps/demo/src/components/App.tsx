@@ -1,5 +1,6 @@
 import { AppShell, Burger, Divider, Group, ScrollArea, Stack, Text } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
+import { AboutButton } from './AboutButton'
 import { HighlightInfo } from './HighlightInfo'
 import { Preview } from './preview/Preview'
 import { ColorThemeSwitcher } from './settings/ColorThemeSwitcher'
@@ -14,6 +15,8 @@ const AppContent = (
       <ScrollArea>
         <Stack gap="md">
           <ColorThemeSwitcher />
+
+          <AboutButton />
 
           <StateSwitch label="Show grid" stateProp="showGrid" />
           <StateSwitch label="Enable light" stateProp="enableLight" />
