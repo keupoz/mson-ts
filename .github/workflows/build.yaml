@@ -23,10 +23,11 @@ jobs:
 
       - uses: changesets/action@v1
         env:
+          NPM_CONFIG_PROVENANCE: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         with:
-          publish: pnpm publish -r
+          publish: pnpm publish -r --access public
 
       - uses: actions/upload-pages-artifact@v3
         with:
