@@ -6,18 +6,21 @@ import { useCallback } from 'react'
 import { GLTFExporter, OBJExporter } from 'three/addons'
 import { MODELS } from '@demo/models/collection'
 import type { ModelItem } from '@demo/models/createModelItem'
-import { getAppState, setAppState } from '@demo/state/appState'
+import { getAppState, setAppState, useAppState } from '@demo/state/appState'
 import { updateModel } from '@demo/state/updateModel'
 import { TEXTURES } from '@demo/textures/collection'
-
-const modelKeys = Object.keys(MODELS)
-const textureKeys = Object.keys(TEXTURES)
 
 export interface ModelItemSettingsProps {
   modelItem: ModelItem
 }
 
 export function ModelItemSettings({ modelItem }: ModelItemSettingsProps) {
+  const userModels = useAppState(state => state.userModels)
+  const userTextures = useAppState(state => state.userTextures)
+
+  const modelKeys = Object.keys({ ...MODELS, ...userModels })
+  const textureKeys = Object.keys({ ...TEXTURES, ...userTextures })
+
   function exportGLTF() {
     const object = getAppState().objects[modelItem.modelId]
 

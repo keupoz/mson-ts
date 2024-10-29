@@ -1,7 +1,9 @@
 import { ModelLoader } from '@keupoz/mson-core'
+import { getAppState } from '@demo/state/appState'
+import { createFileModelLoader } from '@demo/utils/createFileModelLoader'
 import { MODELS } from './collection'
 
-export const modelLoader = new ModelLoader(async (modelId) => {
+export const fetchModelLoader = new ModelLoader(async (modelId) => {
   const url = MODELS[modelId]
 
   if (!url) {
@@ -13,3 +15,5 @@ export const modelLoader = new ModelLoader(async (modelId) => {
 
   return json
 })
+
+export const modelLoader = createFileModelLoader(modelId => getAppState().userModels[modelId])

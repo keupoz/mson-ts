@@ -14,6 +14,7 @@
     "@keupoz/mson-core": "workspace:^",
     "@keupoz/mson-three": "workspace:^",
     "@mantine/core": "^7.13.4",
+    "@mantine/dropzone": "^7.13.4",
     "@mantine/hooks": "^7.13.4",
     "@react-three/drei": "^9.115.0",
     "@react-three/fiber": "^8.17.10",

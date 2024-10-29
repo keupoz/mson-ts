@@ -10,6 +10,9 @@ export interface AppState {
   currentObject: Mesh | null
 
   models: ModelItem[]
+
+  userModels: Record<string, File>
+  userTextures: Record<string, string>
 }
 
 export const useAppState = createImmerStore<AppState>(() => ({
@@ -25,6 +28,9 @@ export const useAppState = createImmerStore<AppState>(() => ({
       'community:textures/Main Cast/princesses/princess_cadence.png',
     ),
   ],
+
+  userModels: {},
+  userTextures: {},
 }))
 
 export const setAppState = useAppState.setState.bind(useAppState)
