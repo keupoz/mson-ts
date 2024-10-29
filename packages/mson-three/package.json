@@ -1,7 +1,7 @@
 {
   "name": "@keupoz/mson-three",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "MSON port integration with Three.js",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
