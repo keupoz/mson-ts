@@ -1,7 +1,6 @@
 {
   "recommendations": [
     "editorconfig.editorconfig",
-    "bradlc.vscode-tailwindcss",
     "dbaeumer.vscode-eslint",
     "gruntfuggly.todo-tree"
   ],
