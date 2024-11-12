@@ -6,8 +6,9 @@ export default antfu({
   isInEditor: false,
   rules: {
     'antfu/curly': ['off'],
-    'curly': ['error', 'all'],
+    'antfu/if-newline': ['off'],
 
+    'curly': ['error', 'multi-line', 'consistent'],
     'style/brace-style': ['error', '1tbs'],
 
     'perfectionist/sort-imports': ['error', {
