@@ -21,6 +21,10 @@ function extractAssets(files: FileWithPath[]) {
     }
 
     if (!ASSET_SUBTYPE_REGEX.test(file.path)) {
+      if (file.type === MIME_TYPES.png) {
+        textures[file.name] = file
+      }
+
       continue
     }
 
