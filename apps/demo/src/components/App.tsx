@@ -1,6 +1,6 @@
-import { AppShell, Burger, Divider, Group, ScrollArea, Stack, Text } from '@mantine/core'
-import { useDisclosure } from '@mantine/hooks'
+import { AppShellAside, AppShellMain, Divider, ScrollArea, Stack } from '@mantine/core'
 import { AboutButton } from './AboutButton'
+import { AppShell } from './AppShell'
 import { HighlightInfo } from './HighlightInfo'
 import { Preview } from './preview/Preview'
 import { ColorThemeSwitcher } from './settings/ColorThemeSwitcher'
@@ -8,51 +8,31 @@ import { ModelsSettings } from './settings/ModelsSettings'
 import { PresetsSelect } from './settings/PresetsSelect'
 import { StateSwitch } from './settings/StateSwitch'
 
-// This magically enables memoization
-const AppContent = (
-  <>
-    <AppShell.Aside p="sm">
-      <ScrollArea>
-        <Stack gap="md">
-          <ColorThemeSwitcher />
-
-          <AboutButton />
-
-          <StateSwitch label="Show grid" stateProp="showGrid" />
-          <StateSwitch label="Enable light" stateProp="enableLight" />
-
-          <Divider />
-
-          <PresetsSelect />
-          <ModelsSettings />
-        </Stack>
-      </ScrollArea>
-    </AppShell.Aside>
-
-    <AppShell.Main h="100dvh">
-      <HighlightInfo />
-      <Preview />
-    </AppShell.Main>
-  </>
-)
-
 export function App() {
-  const [opened, { toggle }] = useDisclosure()
-
   return (
-    <AppShell
-      header={{ height: 56 }}
-      aside={{ width: 300, breakpoint: 'sm', collapsed: { mobile: !opened } }}
-    >
-      <AppShell.Header px="md">
-        <Group h="100%" justify="space-between">
-          <Text component="span" fw={700} size="xl">Mson Viewer</Text>
+    <AppShell>
+      <AppShellAside p="sm">
+        <ScrollArea>
+          <Stack gap="md">
+            <ColorThemeSwitcher />
 
-          <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
-        </Group>
-      </AppShell.Header>
+            <AboutButton />
 
-      {AppContent}
+            <StateSwitch label="Show grid" stateProp="showGrid" />
+            <StateSwitch label="Enable light" stateProp="enableLight" />
+
+            <Divider />
+
+            <PresetsSelect />
+            <ModelsSettings />
+          </Stack>
+        </ScrollArea>
+      </AppShellAside>
+
+      <AppShellMain h="100dvh">
+        <HighlightInfo />
+        <Preview />
+      </AppShellMain>
     </AppShell>
   )
 }
