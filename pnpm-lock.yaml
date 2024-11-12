@@ -155,8 +155,8 @@ importers:
         specifier: workspace:^
         version: link:../mson-core
       three:
-        specifier: '>=0.169.0'
-        version: 0.169.0
+        specifier: '>=0.170.0'
+        version: 0.170.0
     devDependencies:
       '@repo/typescript-config':
         specifier: workspace:^
@@ -3475,9 +3475,6 @@ packages:
     resolution: {integrity: sha512-rYr8PqMljMza+Ct8kQk90Y7y+YcWoPu1thfYv5YGCp0hytNRbxSQWXY4GpdTGymCj3bDggEBpxso53C3pPwhIw==}
     peerDependencies:
       three: '>=0.128.0'
-
-  three@0.169.0:
-    resolution: {integrity: sha512-Ed906MA3dR4TS5riErd4QBsRGPcx+HBDX2O5yYE5GqJeFQTPU+M56Va/f/Oph9X7uZo3W3o4l2ZhBZ6f6qUv0w==}
 
   three@0.170.0:
     resolution: {integrity: sha512-FQK+LEpYc0fBD+J8g6oSEyyNzjp+Q7Ks1C568WWaoMRLW+TkNNWmenWeGgJjV105Gd+p/2ql1ZcjYvNiPZBhuQ==}
@@ -7575,8 +7572,6 @@ snapshots:
       fflate: 0.6.10
       potpack: 1.0.2
       three: 0.170.0
-
-  three@0.169.0: {}
 
   three@0.170.0: {}
 
