@@ -5,6 +5,7 @@ import { ModelStage } from '../ModelStage'
 
 export function SceneModels() {
   const models = useAppState(state => state.models)
+  const userTextures = useAppState(state => state.userTextures)
 
   if (!models.length) {
     return null
@@ -18,7 +19,7 @@ export function SceneModels() {
         <Model
           key={item.id}
           modelId={item.modelId}
-          textureUrl={getTextureUrl(item.textureId)}
+          textureUrl={getTextureUrl(item.textureId, userTextures)}
         />
       ))}
     </ModelStage>
