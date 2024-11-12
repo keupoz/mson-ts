@@ -6,13 +6,18 @@ import { useAppState } from '@demo/state/appState'
 export function HighlightInfo() {
   const currentObject = useAppState(state => state.currentObject)
 
-  const parentName = currentObject?.parent?.name ?? 'N/A'
+  const visible = currentObject?.visible ?? 'N/A'
+  let parentName = currentObject?.parent?.name ?? 'N/A'
   const objectName = currentObject?.name ?? 'N/A'
   let materialName = 'N/A'
 
   const size = currentObject?.geometry.boundingBox?.getSize(new Vector3())
   const position = currentObject?.getWorldPosition(new Vector3())
   const quaternion = currentObject?.getWorldQuaternion(new Quaternion())
+
+  if (currentObject?.parent?.visible !== undefined) {
+    parentName += ` (${currentObject.parent.visible ? 'visible' : 'hidden'})`
+  }
 
   if (currentObject?.material) {
     if (Array.isArray(currentObject.material)) {
@@ -29,6 +34,7 @@ export function HighlightInfo() {
     <Affix position={{ left: 8, bottom: 8 }} zIndex={100}>
       <Paper withBorder pr="md" ff="monospace">
         <ul>
+          <li>{`Visible: ${visible}`}</li>
           <li>{`Parent: ${parentName}`}</li>
           <li>{`Name: ${objectName}`}</li>
           <li>{`Material: ${materialName}`}</li>
