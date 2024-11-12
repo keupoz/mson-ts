@@ -1,9 +1,9 @@
 import { createTheme, ScrollArea, Select, type SelectProps, Switch, Text, Tooltip } from '@mantine/core'
-import SelectClassNames from './styles/Select.module.scss'
-import SwitchClassNames from './styles/Switch.module.scss'
+import SelectClassNames from './Select.module.scss'
+import SwitchClassNames from './Switch.module.scss'
 import '@mantine/core/styles.css'
 import '@mantine/dropzone/styles.css'
-import './styles/main.scss'
+import './main.scss'
 
 const renderSelectOption: SelectProps['renderOption'] = ({ option }) => (
   <Text span lineClamp={2} inherit title={option.label}>
