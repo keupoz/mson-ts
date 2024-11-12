@@ -6,8 +6,6 @@ export interface ModelItem {
   textureId: string
 }
 
-MathUtils.generateUUID()
-
 export function createModelItem(modelId: string, textureId: string) {
   const model: ModelItem = {
     id: MathUtils.generateUUID(),
