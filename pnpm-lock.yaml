@@ -35,6 +35,9 @@ importers:
       '@keupoz/mson-three':
         specifier: workspace:^
         version: link:../../packages/mson-three
+      '@keupoz/r3f-utils':
+        specifier: ^1.0.3
+        version: 1.0.3(@react-three/drei@9.115.0(@react-three/fiber@8.17.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.170.0))(@types/react@18.3.12)(@types/three@0.170.0)(immer@10.1.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.170.0))(@react-three/fiber@8.17.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.170.0))(camera-controls@2.9.0(three@0.170.0))(react@18.3.1)(three@0.170.0)
       '@mantine/core':
         specifier: ^7.14.0
         version: 7.14.0(@mantine/hooks@7.14.0(react@18.3.1))(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -810,6 +813,15 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
+
+  '@keupoz/r3f-utils@1.0.3':
+    resolution: {integrity: sha512-ZDCTGSpixSWip24Z7G7U8aUXPknc5RCDVx4pRpx412f491AlRNGOGIyRnVybb7GFbScWml0SwbrU+VC9nLVkdQ==}
+    peerDependencies:
+      '@react-three/drei': ^9.115.0
+      '@react-three/fiber': ^8.17.10
+      camera-controls: ^2.9.0
+      react: ^18.3.1
+      three: '>=0.170.0'
 
   '@mantine/core@7.14.0':
     resolution: {integrity: sha512-Osj3nwCXFhOVHIoDtpEpciP7huPhGmG/0w+Zol5tKJ9SG5trV4NDfdFwFcNoxx5al8L6eCLS/fJhloFXaqhOnA==}
@@ -4591,6 +4603,14 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
+
+  '@keupoz/r3f-utils@1.0.3(@react-three/drei@9.115.0(@react-three/fiber@8.17.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.170.0))(@types/react@18.3.12)(@types/three@0.170.0)(immer@10.1.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.170.0))(@react-three/fiber@8.17.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.170.0))(camera-controls@2.9.0(three@0.170.0))(react@18.3.1)(three@0.170.0)':
+    dependencies:
+      '@react-three/drei': 9.115.0(@react-three/fiber@8.17.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.170.0))(@types/react@18.3.12)(@types/three@0.170.0)(immer@10.1.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.170.0)
+      '@react-three/fiber': 8.17.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.170.0)
+      camera-controls: 2.9.0(three@0.170.0)
+      react: 18.3.1
+      three: 0.170.0
 
   '@mantine/core@7.14.0(@mantine/hooks@7.14.0(react@18.3.1))(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:

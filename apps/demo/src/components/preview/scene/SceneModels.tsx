@@ -1,7 +1,7 @@
 import { useAppState } from '@demo/state/appState'
 import { getTextureUrl } from '@demo/textures/getTextureUrl'
 import { Model } from '../Model'
-import { ModelStage } from '../stage/ModelStage'
+import { ModelStage } from '../ModelStage'
 
 export function SceneModels() {
   const models = useAppState(state => state.models)
