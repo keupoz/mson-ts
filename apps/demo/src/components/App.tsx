@@ -11,9 +11,9 @@ import { StateSwitch } from './settings/StateSwitch'
 export function App() {
   return (
     <AppShell>
-      <AppShellAside p="sm">
+      <AppShellAside>
         <ScrollArea>
-          <Stack gap="md">
+          <Stack gap="md" p="sm">
             <ColorThemeSwitcher />
 
             <AboutButton />
