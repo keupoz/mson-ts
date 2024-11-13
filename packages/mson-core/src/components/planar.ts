@@ -61,5 +61,5 @@ function createFace(context: ComponentContext, json: PlanarFace, face: Face) {
 
   const mirror: Tuple2<boolean> = [mirrorX, mirrorY]
 
-  return createPlane(face, position, size, [0, 0, 0], mirror, texture)
+  return createPlane(face, position, size, context.getDilation([0, 0, 0]), mirror, texture)
 }

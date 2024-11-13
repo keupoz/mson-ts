@@ -16,6 +16,12 @@ export function createPlane(
   const size3 = resolve(face, size, 0)
   const mirror3 = resolve(face, mirror, false)
 
+  dilate = [
+    dilate[0],
+    applyFixtures(face, dilate[1]),
+    dilate[2],
+  ]
+
   const { wds, eds, eus, wus, wdn, edn, eun, wun } = generateCuboidVertices(
     position,
     size3,
@@ -87,4 +93,9 @@ function resolve<T>(face: Face, tuple: Tuple2<T>, defaultValue: T): Tuple3<T> {
   const z = tuple[axis[2]] ?? defaultValue
 
   return [x, y, z]
+}
+
+function applyFixtures(face: Face, value: number) {
+  const axis = Faces[face]
+  return axis === Axis.Y ? -value : value
 }
