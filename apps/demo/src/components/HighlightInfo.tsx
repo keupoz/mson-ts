@@ -1,4 +1,4 @@
-import type { Vector3Like } from 'three'
+import type { Material, Object3D, Vector3Like } from 'three'
 import { Affix, Paper } from '@mantine/core'
 import { Euler, MathUtils, Quaternion, Vector3 } from 'three'
 import { useAppState } from '@demo/state/appState'
@@ -6,55 +6,73 @@ import { useAppState } from '@demo/state/appState'
 export function HighlightInfo() {
   const currentObject = useAppState(state => state.currentObject)
 
-  const visible = currentObject?.visible ?? 'N/A'
-  let parentName = currentObject?.parent?.name ?? 'N/A'
-  const objectName = currentObject?.name ?? 'N/A'
-  let materialName = 'N/A'
+  const hidden = currentObject ? !currentObject.visible : 'N/A'
+  const path = currentObject ? objectPath(currentObject) : 'N/A'
+
+  currentObject?.geometry.computeBoundingBox()
 
   const size = currentObject?.geometry.boundingBox?.getSize(new Vector3())
   const position = currentObject?.getWorldPosition(new Vector3())
   const quaternion = currentObject?.getWorldQuaternion(new Quaternion())
 
-  if (currentObject?.parent?.visible !== undefined) {
-    parentName += ` (${currentObject.parent.visible ? 'visible' : 'hidden'})`
-  }
-
-  if (currentObject?.material) {
-    if (Array.isArray(currentObject.material)) {
-      materialName = currentObject.material
-        .map(({ name, type }) => `${JSON.stringify(name)} (${type})`)
-        .join(', ')
-    } else {
-      materialName = JSON.stringify(currentObject.material.name)
-      materialName += ` (${currentObject.material.type})`
-    }
-  }
-
   return (
     <Affix position={{ left: 8, bottom: 8 }} zIndex={100}>
-      <Paper withBorder pr="md" ff="monospace">
-        <ul>
-          <li>{`Visible: ${visible}`}</li>
-          <li>{`Parent: ${parentName}`}</li>
-          <li>{`Name: ${objectName}`}</li>
-          <li>{`Material: ${materialName}`}</li>
-          <li>{`Geometry size: ${vectorString(size)}`}</li>
-          <li>{`World position: ${vectorString(position)}`}</li>
-          <li>{`World rotation: ${rotationString(quaternion)}`}</li>
-        </ul>
+      <Paper withBorder pr="md">
+        <pre>
+          <ul>
+            <li>{`Hidden: ${hidden}`}</li>
+            <li>{`Path: ${path}`}</li>
+            <li>{`Material: ${materialsString(currentObject?.material)}`}</li>
+            <li>{`Boundary box:   ${vectorString(size)}`}</li>
+            <li>{`World position: ${vectorString(position)}`}</li>
+            <li>{`World rotation: ${rotationString(quaternion)}`}</li>
+          </ul>
+        </pre>
       </Paper>
     </Affix>
   )
 }
 
+function objectPath(object: Object3D, path = object.name) {
+  if (object.parent?.name) {
+    path = `${object.parent.name}.${path}`
+
+    if (!object.parent.visible) {
+      path = `!${path}`
+    }
+
+    return objectPath(object.parent, path)
+  }
+
+  return path
+}
+
+function materialString(material: Material) {
+  return `${JSON.stringify(material.name)} (${material.type})`
+}
+
+function materialsString(material: Material | Material[] | undefined) {
+  if (!material) return 'N/A'
+
+  if (Array.isArray(material)) {
+    return material.map(materialString).join(', ')
+  }
+
+  return materialString(material)
+}
+
 function vectorString(vector: Vector3Like | undefined) {
-  return vector ? `${vector.x} x ${vector.y} x ${vector.z}` : 'N/A'
+  if (!vector) return 'N/A'
+
+  const x = vector.x.toFixed(2).padStart(7, ' ')
+  const y = vector.y.toFixed(2).padStart(7, ' ')
+  const z = vector.z.toFixed(2).padStart(7, ' ')
+
+  return [x, y, z].join(', ')
 }
 
 function rotationString(quaternion: Quaternion | undefined) {
-  if (!quaternion) {
-    return 'N/A'
-  }
+  if (!quaternion) return 'N/A'
 
   const euler = new Euler().setFromQuaternion(quaternion)
 
@@ -62,5 +80,5 @@ function rotationString(quaternion: Quaternion | undefined) {
   const y = MathUtils.radToDeg(euler.y)
   const z = MathUtils.radToDeg(euler.z)
 
-  return `x ${x}, y ${y}, z ${z}`
+  return vectorString({ x, y, z })
 }
