@@ -12,7 +12,7 @@ export default antfu({
     'style/brace-style': ['error', '1tbs'],
 
     'perfectionist/sort-imports': ['error', {
-      internalPattern: ['@repo/**', '@demo/**', '@ui/**'],
+      internalPattern: ['^@repo/.*', '^@demo/.*', '^@ui/.*'],
       groups: [
         'type',
         ['parent-type', 'sibling-type', 'index-type'],
