@@ -15,13 +15,13 @@
     "@keupoz/mson-core": "workspace:^",
     "@keupoz/mson-three": "workspace:^",
     "@keupoz/r3f-utils": "^1.0.3",
-    "@mantine/core": "^7.14.2",
-    "@mantine/dropzone": "^7.14.2",
-    "@mantine/hooks": "^7.14.2",
-    "@react-three/drei": "^9.117.3",
+    "@mantine/core": "^7.14.3",
+    "@mantine/dropzone": "^7.14.3",
+    "@mantine/hooks": "^7.14.3",
+    "@react-three/drei": "^9.119.0",
     "@react-three/fiber": "^8.17.10",
-    "@tanstack/react-query": "^5.61.3",
-    "@tanstack/react-query-devtools": "^5.61.3",
+    "@tanstack/react-query": "^5.62.1",
+    "@tanstack/react-query-devtools": "^5.62.1",
     "camera-controls": "^2.9.0",
     "file-saver": "^2.0.5",
     "immer": "^10.1.1",
@@ -34,13 +34,13 @@
   "devDependencies": {
     "@repo/typescript-config": "workspace:^",
     "@types/file-saver": "^2.0.7",
-    "@types/node": "^22.9.3",
+    "@types/node": "^22.10.1",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@types/three": "^0.170.0",
-    "@vitejs/plugin-react-swc": "^3.7.1",
+    "@vitejs/plugin-react-swc": "^3.7.2",
     "sass-embedded": "^1.81.0",
     "unplugin-react-markdown": "^0.1.9",
-    "vite": "^5.4.11"
+    "vite": "^6.0.2"
   }
 }
