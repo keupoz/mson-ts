@@ -1,7 +1,7 @@
 {
   "name": "@keupoz/mson-core",
   "type": "module",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Core package of TypeScript MSON port",
   "homepage": "https://github.com/keupoz/mson-ts/tree/main/packages/mson-core",
   "repository": {
