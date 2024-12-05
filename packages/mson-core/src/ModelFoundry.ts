@@ -5,6 +5,7 @@ import type { Tuple3 } from './types/tuple'
 export interface ModelInfo {
   type: 'model'
   name: string
+  implementation?: string
   texture: Required<Texture>
   children: ChildInfo[]
 }

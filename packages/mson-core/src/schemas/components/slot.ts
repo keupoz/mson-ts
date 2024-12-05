@@ -6,7 +6,7 @@ import { TextureSchema } from '../texture'
 export const SlotSchema = z.object({
   name: z.string().optional(),
   data: z.string().or(RootSchema.shape.data),
-  implemenation: z.string().optional(),
+  implementation: z.string().optional(),
   texture: TextureSchema.optional(),
   locals: LocalsSchema.optional(),
 })

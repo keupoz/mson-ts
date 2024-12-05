@@ -17,6 +17,8 @@ export const MsonSlot = createComponentType(
       json.texture,
     )
 
+    model.implementation = json.implementation
+
     return model
   },
 )
