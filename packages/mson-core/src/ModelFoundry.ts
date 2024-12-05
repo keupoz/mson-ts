@@ -28,14 +28,42 @@ export interface CuboidInfo {
   quads: Quad[]
 }
 
-export abstract class ModelFoundry<Model, ModelPart, Cuboid> {
-  public abstract createModel(info: ModelInfo): Model
-  public abstract createModelPart(info: ModelPartInfo): ModelPart
+export type ImplementableSlots<Model> = Record<string, Model[]>
+
+export interface ModelResult<Model> {
+  model: Model
+  implementableSlots: ImplementableSlots<Model>
+}
+
+export abstract class ModelFoundry<ModelRoot, ModelPart, Cuboid> {
+  public abstract createRoot(info: ModelInfo, implementableSlots: ImplementableSlots<ModelRoot>): ModelRoot
+  public abstract createModelPart(info: ModelPartInfo, implementableSlots: ImplementableSlots<ModelRoot>): ModelPart
   public abstract createCuboid(info: CuboidInfo): Cuboid
 
-  public createChild(info: ChildInfo) {
+  public createModel(info: ModelInfo) {
+    const implementableSlots: ImplementableSlots<ModelRoot> = {}
+    const model = this.createRootAndCollect(info, implementableSlots)
+
+    const result: ModelResult<ModelRoot> = { model, implementableSlots }
+
+    return result
+  }
+
+  private createRootAndCollect(info: ModelInfo, implementableSlots: ImplementableSlots<ModelRoot>) {
+    const model = this.createRoot(info, implementableSlots)
+    const { implementation } = info
+
+    if (implementation) {
+      implementableSlots[implementation] ??= []
+      implementableSlots[implementation].push(model)
+    }
+
+    return model
+  }
+
+  public createChild(info: ChildInfo, implementableSlots: ImplementableSlots<ModelRoot>) {
     return 'cubes' in info
-      ? this.createModelPart(info)
-      : this.createModel(info)
+      ? this.createModelPart(info, implementableSlots)
+      : this.createRootAndCollect(info, implementableSlots)
   }
 }

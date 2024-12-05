@@ -1,4 +1,4 @@
-import type { CuboidInfo, ModelInfo, ModelPartInfo } from '@keupoz/mson-core'
+import type { CuboidInfo, ImplementableSlots, ModelInfo, ModelPartInfo } from '@keupoz/mson-core'
 import type { Material } from 'three'
 import { ModelFoundry } from '@keupoz/mson-core'
 import { Group, Mesh } from 'three'
@@ -15,10 +15,10 @@ export class ThreeModelFoundry extends ModelFoundry<Group, Group, Mesh> {
     this.getMaterial = getMaterial
   }
 
-  public createModel(info: ModelInfo): Group {
+  public createRoot(info: ModelInfo, implementableSlots: ImplementableSlots<Group>): Group {
     const group = new Group()
     const children = info.children.map((child) => {
-      return this.createChild(child)
+      return this.createChild(child, implementableSlots)
     })
 
     group.name = info.name
@@ -30,7 +30,7 @@ export class ThreeModelFoundry extends ModelFoundry<Group, Group, Mesh> {
     return group
   }
 
-  public createModelPart(info: ModelPartInfo): Group {
+  public createModelPart(info: ModelPartInfo, implementableSlots: ImplementableSlots<Group>): Group {
     const group = new Group()
 
     group.name = info.name
@@ -43,7 +43,7 @@ export class ThreeModelFoundry extends ModelFoundry<Group, Group, Mesh> {
     group.rotation.set(rx, -ry, -rz)
 
     const children = info.children.map((child) => {
-      return this.createChild(child)
+      return this.createChild(child, implementableSlots)
     })
 
     const cubes = info.cubes.map(child => this.createCuboid(child))

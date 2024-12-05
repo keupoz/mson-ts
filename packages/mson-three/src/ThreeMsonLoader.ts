@@ -1,5 +1,5 @@
-import type { Object3D } from 'three'
-import { ModelLoader } from '@keupoz/mson-core'
+import type { Group, Object3D } from 'three'
+import { ModelLoader, type ModelResult } from '@keupoz/mson-core'
 import { FileLoader, Loader, MeshStandardMaterial } from 'three'
 import { ThreeModelFoundry } from './ThreeModelFoundry'
 
@@ -56,7 +56,7 @@ export class ThreeMsonLoader extends Loader {
 
   public override load(
     modelId: string,
-    onLoad: (data: Object3D) => void,
+    onLoad: (data: ModelResult<Group>) => void,
     onProgress?: (event: ProgressEvent<EventTarget>) => void,
     onError?: (err: unknown) => void,
   ) {
@@ -69,15 +69,13 @@ export class ThreeMsonLoader extends Loader {
   }
 
   public override loadAsync(modelId: string, onProgress?: (event: ProgressEvent<EventTarget>) => void) {
-    return new Promise<Object3D>((resolve, reject) => {
+    return new Promise<ModelResult<Object3D>>((resolve, reject) => {
       this.load(modelId, resolve, onProgress, reject)
     })
   }
 
   public async parse(name: string, data: unknown) {
     const modelInfo = await this.modelLoader.parse(name, data)
-    const object = this.foundry.createModel(modelInfo)
-
-    return object
+    return this.foundry.createModel(modelInfo)
   }
 }

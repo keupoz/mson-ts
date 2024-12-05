@@ -8,16 +8,21 @@ export interface ModelProps {
 }
 
 export function Model({ modelId, textureUrl }: ModelProps) {
-  const model = useModel(modelId, textureUrl)
+  const { model, implementableSlots } = useModel(modelId, textureUrl)
 
   useLayoutEffect(() => {
-    model.traverse((child) => {
-      if (child.name === 'corona') {
-        child.visible = true
-        child.renderOrder = 1
+    // eslint-disable-next-line no-console
+    console.log(`Slots of "${modelId}"`, implementableSlots)
+
+    implementableSlots['com.minelittlepony.client.model.part.UnicornHorn']?.forEach((item) => {
+      const corona = item.getObjectByName('corona')
+
+      if (corona) {
+        corona.visible = true
+        corona.renderOrder = 1
       }
     })
-  }, [model])
+  }, [implementableSlots, modelId])
 
   useEffect(() => {
     setAppState((draft) => {

@@ -20,7 +20,7 @@ export function useModel(modelId: string, textureUrl: string) {
     })
   }, [glowMaterial, skinMaterial])
 
-  const model = useMemo(() => {
+  const modelResult = useMemo(() => {
     return modelFoundry.createModel(data)
   }, [data, modelFoundry])
 
@@ -28,5 +28,5 @@ export function useModel(modelId: string, textureUrl: string) {
     console.error(error)
   }
 
-  return model
+  return modelResult
 }
