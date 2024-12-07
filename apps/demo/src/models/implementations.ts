@@ -11,10 +11,14 @@ export const Implementations: Record<string, (slot: SlotInfo<Object3D>) => void>
     }
   },
 
-  'com.minelittlepony.client.model.part.PonyTail$Segment': (slot) => {
-    const tailStop = slot.info.context.getLocal('segments')
-    const index = slot.info.context.getLocal('segment_index')
+  'com.minelittlepony.client.model.part.PonyTail': (slot) => {
+    slot.model.name += 'Root'
 
-    slot.model.visible = index < tailStop
+    const tailStop = slot.info.context.getLocal('#segments')
+    const tail = slot.model.getObjectByName('tail')
+
+    tail?.children.forEach((segment, index) => {
+      segment.visible = index < tailStop
+    })
   },
 }
