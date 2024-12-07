@@ -120,7 +120,7 @@ export class ComponentContext {
     return value
   }
 
-  private getLocal(name: string) {
+  public getLocal(name: string) {
     if (this.stack.has(name)) {
       console.warn(`Cyclical local request: "${name}"`)
 

@@ -70,6 +70,7 @@ export class ModelLoader {
     const result: ModelInfo = {
       type: 'model',
       name,
+      context,
       texture: context.getTexture(),
       children: [],
     }

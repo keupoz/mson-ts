@@ -1,10 +1,12 @@
 import type { Quad } from './3d/quad'
+import type { ComponentContext } from './ComponentContext'
 import type { Texture } from './schemas/texture'
 import type { Tuple3 } from './types/tuple'
 
 export interface ModelInfo {
   type: 'model'
   name: string
+  context: ComponentContext
   implementation?: string
   texture: Required<Texture>
   children: ChildInfo[]
@@ -28,7 +30,12 @@ export interface CuboidInfo {
   quads: Quad[]
 }
 
-export type ImplementableSlots<Model> = Record<string, Model[]>
+export interface SlotInfo<Model> {
+  info: ModelInfo
+  model: Model
+}
+
+export type ImplementableSlots<Model> = Record<string, SlotInfo<Model>[]>
 
 export interface ModelResult<Model> {
   model: Model
@@ -55,7 +62,7 @@ export abstract class ModelFoundry<ModelRoot, ModelPart, Cuboid> {
 
     if (implementation) {
       implementableSlots[implementation] ??= []
-      implementableSlots[implementation].push(model)
+      implementableSlots[implementation].push({ info, model })
     }
 
     return model
