@@ -1,5 +1,11 @@
 # @keupoz/mson-core
 
+## 1.2.0
+
+### Minor Changes
+
+- 7362e85: Add model context to implementable slot info
+
 ## 1.1.0
 
 ### Minor Changes
