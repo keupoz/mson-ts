@@ -5,6 +5,7 @@ import { createImmerStore } from './createImmerStore'
 export interface AppState {
   showGrid: boolean
   enableLight: boolean
+  applyImplementations: boolean
 
   objects: Record<string, Object3D>
   currentObject: Mesh | null
@@ -18,6 +19,7 @@ export interface AppState {
 export const useAppState = createImmerStore<AppState>(() => ({
   showGrid: true,
   enableLight: true,
+  applyImplementations: true,
 
   objects: {},
   currentObject: null,

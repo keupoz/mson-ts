@@ -20,6 +20,7 @@ export function App() {
 
             <StateSwitch label="Show grid" stateProp="showGrid" />
             <StateSwitch label="Enable light" stateProp="enableLight" />
+            <StateSwitch label="Apply implementations" stateProp="applyImplementations" />
 
             <Divider />
 
