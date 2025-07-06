@@ -2,19 +2,18 @@ import type { Tuple3 } from '../types/tuple'
 import { vertex } from './vertex'
 
 export function generateCuboidVertices(
-  position: Tuple3<number>,
   size: Tuple3<number>,
   dilate: Tuple3<number>,
   mirror: Tuple3<boolean>,
   tipInset: number,
 ) {
-  let xMax = position[0] + size[0] + dilate[0]
-  let yMax = position[1] + size[1] + dilate[1]
-  let zMax = position[2] + size[2] + dilate[2]
+  let xMax = size[0] + dilate[0]
+  let yMax = size[1] + dilate[1]
+  let zMax = size[2] + dilate[2]
 
-  let xMin = position[0] - dilate[0]
-  let yMin = position[1] - dilate[1]
-  let zMin = position[2] - dilate[2]
+  let xMin = -dilate[0]
+  let yMin = -dilate[1]
+  let zMin = -dilate[2]
 
   if (mirror[0]) {
     [xMin, xMax] = [xMax, xMin]

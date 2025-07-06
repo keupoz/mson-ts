@@ -14,8 +14,8 @@ export const MsonCone = createComponentType(
     const mirror = json.mirror ?? context.getMirror()[0]
     const taper = context.ref(json.taper)
 
-    const quads = createCone(position, size, dilate, mirror, texture, taper)
-    const result: CuboidInfo = { type: 'cuboid', name, quads }
+    const quads = createCone(size, dilate, mirror, texture, taper)
+    const result: CuboidInfo = { type: 'cuboid', name, position, quads }
 
     return result
   },

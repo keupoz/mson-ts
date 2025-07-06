@@ -14,8 +14,13 @@ export const MsonPlane = createComponentType(
     const mirror = json.mirror
     const face = json.face
 
-    const quad = createPlane(face, position, size, dilate, mirror, texture)
-    const result: CuboidInfo = { type: 'cuboid', name, quads: [quad] }
+    const quad = createPlane(face, size, dilate, mirror, texture)
+    const result: CuboidInfo = {
+      type: 'cuboid',
+      name,
+      position,
+      quads: [quad],
+    }
 
     return result
   },

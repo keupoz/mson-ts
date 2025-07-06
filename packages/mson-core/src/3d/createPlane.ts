@@ -7,7 +7,6 @@ import { quad } from './quad'
 
 export function createPlane(
   face: Face,
-  position: Tuple3<number>,
   size: Tuple2<number>,
   dilate: Tuple3<number>,
   mirror: Tuple2<boolean>,
@@ -23,7 +22,6 @@ export function createPlane(
   ]
 
   const { wds, eds, eus, wus, wdn, edn, eun, wun } = generateCuboidVertices(
-    position,
     size3,
     dilate,
     mirror3,

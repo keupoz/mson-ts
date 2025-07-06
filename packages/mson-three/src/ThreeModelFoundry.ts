@@ -65,6 +65,9 @@ export class ThreeModelFoundry extends ModelFoundry<Group, Group, Mesh> {
 
     mesh.name = info.name
 
+    const [x, y, z] = info.position
+    mesh.position.set(x, -y, -z)
+
     return mesh
   }
 }

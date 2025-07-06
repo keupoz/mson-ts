@@ -5,7 +5,6 @@ import { generateCuboidVertices } from './generateCuboidVertices'
 import { quad } from './quad'
 
 export function createCone(
-  position: Tuple3<number>,
   size: Tuple3<number>,
   dilate: Tuple3<number>,
   mirror: Tuple3<boolean> | boolean,
@@ -22,7 +21,6 @@ export function createCone(
   }
 
   const { wds, eds, eus, wus, wdn, edn, eun, wun } = generateCuboidVertices(
-    position,
     size,
     dilate,
     mirror,

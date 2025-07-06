@@ -61,7 +61,12 @@ export const MsonQuads = createComponentType(
       )
     })
 
-    const result: CuboidInfo = { type: 'cuboid', name, quads }
+    const result: CuboidInfo = {
+      type: 'cuboid',
+      name,
+      position: [0, 0, 0],
+      quads,
+    }
 
     return result
   },

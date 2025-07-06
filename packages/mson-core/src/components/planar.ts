@@ -1,5 +1,5 @@
-import type { Quad } from '../3d/quad'
 import type { ComponentContext } from '../ComponentContext'
+import type { CuboidInfo } from '../ModelFoundry'
 import type { PlanarFace } from '../schemas/components/planar'
 import type { Face } from '../schemas/components/plane'
 import type { Tuple2 } from '../types/tuple'
@@ -21,8 +21,6 @@ export const MsonPlanar = createComponentType(
       json.mirror,
     )
 
-    const quads: Quad[] = []
-
     for (const face in json.faces) {
       const value = json.faces[face]
 
@@ -30,22 +28,16 @@ export const MsonPlanar = createComponentType(
         continue
       }
 
-      for (const faceJson of value) {
-        quads.push(createFace(subContext, faceJson, face as Face))
-      }
+      value.forEach((faceJson, index) => {
+        compound.cubes.push(createFace(subContext, faceJson, face as Face, `${name}_${face}_face${index}`))
+      })
     }
-
-    compound.cubes.push({
-      type: 'cuboid',
-      name: `${name}_faceSet`,
-      quads,
-    })
 
     return compound
   },
 )
 
-function createFace(context: ComponentContext, json: PlanarFace, face: Face) {
+function createFace(context: ComponentContext, json: PlanarFace, face: Face, name: string): CuboidInfo {
   const [x, y, z, width, height, u, v, mirrorX = false, mirrorY = false] = json
 
   const position = context.resolve([x, y, z] as const)
@@ -60,6 +52,12 @@ function createFace(context: ComponentContext, json: PlanarFace, face: Face) {
   }
 
   const mirror: Tuple2<boolean> = [mirrorX, mirrorY]
+  const quad = createPlane(face, size, context.getDilation([0, 0, 0]), mirror, texture)
 
-  return createPlane(face, position, size, context.getDilation([0, 0, 0]), mirror, texture)
+  return {
+    type: 'cuboid',
+    name,
+    position,
+    quads: [quad],
+  }
 }

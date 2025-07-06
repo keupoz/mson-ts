@@ -27,6 +27,7 @@ export type ChildInfo = ModelInfo | ModelPartInfo
 export interface CuboidInfo {
   type: 'cuboid'
   name: string
+  position: Tuple3<number>
   quads: Quad[]
 }
 
