@@ -1,5 +1,11 @@
 # @keupoz/mson-core
 
+## 1.3.0
+
+### Minor Changes
+
+- 21b584b: Apply position to final mesh instead of quads
+
 ## 1.2.0
 
 ### Minor Changes
