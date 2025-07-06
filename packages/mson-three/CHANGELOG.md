@@ -1,5 +1,16 @@
 # @keupoz/mson-three
 
+## 1.2.0
+
+### Minor Changes
+
+- 21b584b: Apply position to final mesh instead of quads
+
+### Patch Changes
+
+- Updated dependencies [21b584b]
+  - @keupoz/mson-core@1.3.0
+
 ## 1.1.1
 
 ### Patch Changes
